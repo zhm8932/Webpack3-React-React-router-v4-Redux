@@ -1,0 +1,53 @@
+if success
+    - var dataList = data.content
+if !success
+    .noMsg #{message}
+else if !dataList.length
+    .noMsg 暂无数据
+else
+    each item,index in dataList
+        if index<10
+            dl
+                - var jobAreaDtos = item.jobAreaDtos
+                - var len = jobAreaDtos.length
+                - var space = '/'
+                dt(data-id=item.id)
+                    span.tl  #{item.jobName}
+                    span  #{item.jobCatName}
+                    - var title=''
+                        if jobAreaDtos&&jobAreaDtos.length
+                            each areas , i in jobAreaDtos
+                                if areas.cityName
+                                    -title+=areas.cityName
+                                    if i != len - 1 && (len > 1)
+                                        -title+=space
+                                else
+                                    -title+=areas.provinceName
+                                    if i != len - 1 && (len > 1)
+                                        -title+=space
+
+                    span(title=title)
+
+                        if jobAreaDtos&&jobAreaDtos.length
+                            each area , i in jobAreaDtos
+                                //-只显示3个城市
+                                if i<3
+                                    if area.cityName
+                                        em #{area.cityName}
+                                            //-if i!=len-1&&len>1
+                                            if i!=len-1&&(i!=2&&len>1)
+                                                |#{space}
+                                    else
+                                        em #{area.provinceName}
+                                            if i!=len-1&&(i!=2&&len>1)
+                                                | #{space}
+                            if len>3
+                                 em ...
+                    span  #{formatDate(item.updatedAt,'YYYY-MM-DD')}
+                        i.iconfont.icon-arrow-bottom
+                dd
+                    if index==0
+                        if jobDetail&&jobDetail.success
+                            - var jobIntro = jobDetail.data.jobIntro
+                            |#{jobIntro}
+    include ../../includes/pagination

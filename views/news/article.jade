@@ -1,0 +1,34 @@
+extends ../layout
+
+block styles
+  link(rel='stylesheet',href='/css/news/index.css')
+block content
+  section.wrapper.article
+    if !json.success
+      .noMsg #{json.msg}
+    else
+      - var data = json.data
+      if !data
+          .noMsg 内容不存在！
+      else
+          header
+            h1 #{data.title}
+            p 发布日期：
+              time #{formatDate(data.updatedAt,'YYYY-MM-DD')}
+          article!= data.content
+          .up-down
+              p
+                label 上一篇：
+                if data.previousId
+                    a(href='/news/article/#{data.previousId}') #{data.previousTitle}
+                else
+                    span 没有了
+              p
+                label 下一篇：
+                if data.nextId
+                    a(href='/news/article/#{data.nextId}') #{data.nextTitle}
+                else
+                    span 没有了
+
+block scripts
+  script(src='')

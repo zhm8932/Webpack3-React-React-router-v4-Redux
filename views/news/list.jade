@@ -1,0 +1,21 @@
+extends ../layout
+
+block styles
+  link(rel='stylesheet',href='/css/news/index.css')
+block content
+  section.wrapper.list-wrapper
+    header
+      if !catDataSuccess
+        .noMsg #{catData.message}
+      else
+        if catData&&catData.length
+          each cat in catData
+            if cat.id==catId
+              h2 #{cat.catName}
+    if catDataSuccess
+      .list
+        ul.clearfix(data-pageCount=pageCount,data-pageNo=pageNo,data-catId=catId)
+          include ./common/news_li
+block scripts
+
+  script(src='/js/news/list.js')

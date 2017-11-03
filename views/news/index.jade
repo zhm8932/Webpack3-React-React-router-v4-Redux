@@ -1,0 +1,28 @@
+extends ../layout
+
+block styles
+  link(rel='stylesheet',href='/css/news/index.css')
+block content
+  .ads
+    img(src='/images/b-news.png')
+  section.wrapper.list-wrapper
+    if !catDataSuccess
+      .noMsg= catData.msg
+    else
+      if !newsIndexData.length
+        .noMsg 暂无数据
+      else
+        each item in newsIndexData
+          header
+            h2 #{item.catName}
+            a(href='/news/list/#{item.catId}') 查看更多>>
+          .list.clearfix
+            ul
+              - var data = item.data
+              each arr in data
+                li: a(href='/news/article/#{arr.id}')
+                  .img: img(data-original=ImgPath+arr.titleImgPath,alt=arr.title)
+                  p #{arr.title.length>=30?arr.title.substring(0,30)+'...':arr.title}
+
+block scripts
+  script(src='/js/news/index.js')

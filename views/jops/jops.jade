@@ -1,0 +1,59 @@
+extends ../layout
+block styles
+  link(rel='stylesheet',href='/css/jops.css')
+block content
+  .ads
+    img(src='/images/b-jop.png')
+  //-section.wrapper
+    .jop-title
+        p 如果你有志于投身于消费金融这个新兴的风口行业，如果你希望和公司一起成长，那就赶快加入我们吧
+        p 请将简历投至 zhaopin@qhsnowball.com
+        p
+          span 五险一金
+          span 高大尚的办公环境
+          span 年度体检
+          span 股票期权
+          span 节日礼金
+  section.wrapper(data-jobCatId=jobCatId)
+    if !jobCatId
+      .noMsg #{positionData.message}
+    else if !positionData.length
+      .noMsg 暂无数据
+    else
+      .position-wrapper
+        //- var jopType = ['行政','人力资源','市场','产品','数据','风控','项目管理','销售','法务']
+        .position
+          if positionData&&positionData.length
+              each item,index in positionData
+                - var active=''
+                //-if index==0
+                if jobCatId==item.id
+                  - active = 'on'
+                span.cat( class=active,data-jobCatId=item.id) #{item.jobCatName}
+                  i.iconfont.icon-shangjiantou
+          .region
+            label 职位搜索：
+            .select-box.provinces-box
+              .selected
+                span.text 省份选择
+                input(type='hidden',name='provinces')
+                i.iconfont.icon-xiajiantou
+              ul.options
+            .select-box.citys-box
+              .selected
+                span.text 城市选择
+                input(type='hidden',name='citys')
+                i.iconfont.icon-xiajiantou
+              ul.options
+  if jobCatId
+    section.wrapper.jop-list
+      .thead
+        span.tl 职位
+        span 类别
+        span 工作地点
+        span 发布时间
+      .tbody
+        include ./common/jop_list
+
+block scripts
+  script(src='/js/jops.js')

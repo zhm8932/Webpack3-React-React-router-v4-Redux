@@ -1,0 +1,60 @@
+#!/bin/bash
+# Node Settings
+#########################setting####################
+port=3008
+uid=qhsnowball8.msxf.lotest
+#cfgPath=/home/finance/Config/$uid/config.json
+cfgPath=/home/finance/Config/$uid/config
+appPath=/home/finance/App/$uid
+logPath=/home/finance/Logs/$uid
+#########################env setting####################
+export NODE_ENV=$env
+export CFG_PATH=$cfgPath
+export APP_PATH=$appPath
+export LOG_PATH=$logPath
+#########################starting####################
+start() {
+ echo start begin
+ forever start --uid $uid -a -l $logPath/log.log -e $logPath/error.log $appPath/bin/www
+ echo start end
+}
+#########################status####################
+status(){
+  echo status begin
+  forever list
+  echo status end
+}
+#########################stoping####################
+stop() {
+  echo stop begin
+  forever stop $uid
+  echo stop end
+}
+#########################restart####################
+restart(){
+  echo restart begin
+    stop
+    start
+  echo restart end
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  status)
+        status
+        ;;
+  stop)
+        stop
+        ;;
+  restart)
+        restart
+        ;;
+  ?|help)
+        echo $"Usage: $0 {start|status|stop|restart|help|?}"
+        ;;
+  *)
+        echo $"Usage: $0 {help|?}"
+esac
+

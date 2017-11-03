@@ -1,0 +1,11 @@
+if !json.success
+    .noMsg #{json.msg}
+else
+    - var data = json.data&&json.data.content||[]
+        if !data||!data.length
+            .noMsg 暂无数据
+        else
+            each item in data
+                li: a(href="/news/article/#{item.id}")
+                    .img: img(data-original=ImgPath+item.titleImgPath alt=item.title)
+                    p #{item.title.length>=30?item.title.substring(0,30)+'...':item.title}
