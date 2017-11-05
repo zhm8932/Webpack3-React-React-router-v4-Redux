@@ -10,6 +10,7 @@ $color-gray-f6:#f6f6f6;
 
 $color-orange-e6a:#e6a34f;  //主色
 $color-red-f00:#ff6555;     //提示色
+$color-blue-4c7:#4c7ee9;     //提示色
 
 //箭头  $origin:旋转中心  $bgColor：背景颜色  $rotateX,$rotateY 旋转方向
 @mixin arrow($origin:0% 100%,$bgColor:$white,$rotateX:50,$rotateY:-50){

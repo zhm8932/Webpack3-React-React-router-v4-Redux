@@ -5,6 +5,7 @@
 export function getScrollTop() {
 	let bodyScrollTop=0,
 		documentScrollTop=0;
+	// console.log("window.pageYOffset:",window.pageYOffset)
 	if(window.pageYOffset){
 		return window.pageYOffset
 	}

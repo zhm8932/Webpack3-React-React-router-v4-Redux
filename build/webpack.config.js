@@ -45,7 +45,7 @@ module.exports = {
 	// devtool: 'source-map',
 	// devtool: 'inline-source-map',
 	resolve: {
-		extensions: ['.js','.jsx','.json','.scss','.jade'],
+		extensions: ['.js','.jsx','.json','.scss','.jade','.less'],
 		modules: [
 		    path.join(SRC_PATH, "js"),
 		   "node_modules"
@@ -97,6 +97,16 @@ module.exports = {
 				exclude:/node_modules/,
 				include:/views/
 			},
+			{
+				test: /\.less$/,
+				use: [{
+					loader: "style-loader"
+				}, {
+					loader: "css-loader"
+				}, {
+					loader: "less-loader"
+				}]
+			}
 		]
 	},
 	plugins: [

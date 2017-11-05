@@ -15,13 +15,16 @@ export const getAllProducts = () => dispatch => {
 	.then(json => dispatch(receiveProducts(json)))
 }
 
-export const cnodeList = (json)=>({
+export const cnodeList = (json,params)=>({
 	type:'CNODE_LIST',
-	cnodeList:json.data
+	cnodeList:json.data,
+	page:params.page
 })
-export const cnodeListMore = (json)=>({
+export const cnodeListMore = (json,data,cb)=>({
 	type:'CNODE_LIST_MORE',
-	cnodeList:json.data
+	cnodeList:json.data,
+	page:data.page,
+	cb:cb
 })
 
 export const cnodeDetail = (json)=>({
@@ -35,20 +38,20 @@ export const getCnodeList = (data={})=>dispatch=>{
 	fetchs({url:'https://cnodejs.org/api/v1/topics',data})
 	.then(json=>{
 		console.log("json223344:",json)
-		dispatch(cnodeList(json))
+		dispatch(cnodeList(json,data))
 	})
 }
-export const getCnodeListMore = (data={})=>dispatch=>{
+export const getCnodeListMore = (data={},cb)=>dispatch=>{
 	console.log("getCnodeMore:",data)
-	dispatch({type:'REQUEST_CNODE_LIST'})
+	// dispatch({type:'REQUEST_CNODE_LIST'})
 	fetchs({url:'https://cnodejs.org/api/v1/topics',data})
 	.then(json=>{
 		console.log("json2more99:",json)
-		dispatch(cnodeListMore(json))
+		dispatch(cnodeListMore(json,data,cb))
 	})
 }
 export const getDataStart = ()=>dispatch=>{
-	dispatch({type:'REQUEST_CNODE_LIST'})
+	dispatch({type:'REQUEST_CNODE_LIST',isEnd:false})
 }
 export const getCnodeDetail = (id)=>dispatch=>{
 	console.log("idid:",id,"dispatch:",dispatch)
@@ -81,3 +84,8 @@ export const getTopicCollect = id => dispatch=>(
 	fetchs({url:`https://cnodejs.org/api/v1/topic_collect/${id}`})
 	.then(json=>dispatch(topicCollect(json)))
 )
+
+export const handleShow = (type,content='')=>({
+	type:type,
+	content
+})

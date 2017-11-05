@@ -1,0 +1,110 @@
+@import "settings";
+.overlay{
+  width: 100%;  height: 100%;
+  position: fixed;  left: 0;  top: 0;
+  background:#000000;  z-index: 9998;
+  opacity: 0.6;
+  filter:alpha(opacity=60);
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  /*IE4-IE9*/
+  filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+}
+.dialog-box{
+  width: 300px; color: #7a7a7a;  position: fixed; z-index: 9999; left: 50%; top: 50%; margin-left: -150px; font-size: 14px;
+  //margin-top:-50px;
+  transform: translateY(-50%);
+; border-radius: 5px;background-color: #FFFFFF;  text-align: center;
+  overflow: hidden;
+  .inner{position: relative;}
+  .dialog-title{
+    text-align: left;padding:0 0 0 1rem;border-bottom: 1px solid $color-gray-c;line-height: 3.6rem;
+  }
+  .close{
+    transition: all 0.3s;text-indent: -9999px;
+    width:20px;height:20px;display: block;position: absolute;right:0.5rem;top:0.5rem;cursor: pointer;
+    &:before,&:after{
+      height: 2px;width: 14px;content: '';background:$color-gray-9;
+      position: absolute;left:50%;top:50%;margin-left:-7px;margin-top: -1px;
+      transform-origin: 50% 50%;
+      transform: rotate(45deg);
+    }
+    &:after{
+      transform: rotate(-45deg);
+    }
+    &:hover{
+      transform: rotate(180deg);
+    }
+  }
+  .dialog-content{
+    padding:2rem 1rem;
+
+  }
+  textarea{ width: 80%;}
+  .dialog-action{
+    height:3rem;line-height:3rem;font-size: 16px;  text-align: center;border-top: 1px solid $color-gray-c;
+    div{height: 100%}
+    button{
+      display:inline-block;padding:0 10px;border:none;line-height:100%;height:100%;outline:none;text-align: center; cursor: pointer;font-size: 14px;
+      width: 50%;background-color: $color-blue-4c7;color: $white;
+      font-size: 1.6rem;
+      &.ok{}
+      &.cancel{background-color: $color-gray-c;}
+      &.disabled{background-color: $color-gray-9;cursor:default;}
+    }
+
+  }
+  .other{
+    margin-top: -1rem;padding:0 1rem 1rem;text-align: left;
+  }
+
+
+}
+
+.msg-box{
+  width: 300px; color: #7a7a7a;  position: fixed; z-index: 9999; left: 50%; top: 50%; margin-left: -150px;margin-top:-50px; font-size: 14px;
+; border-radius: 5px;background-color: #FFFFFF;  text-align: center;
+  overflow: hidden;
+  .inner{position: relative;}
+  .msg-title{
+    text-align: left;padding:0 0 0 1rem;border-bottom: 1px solid $color-gray-c;line-height: 3.6rem;
+  }
+  .close{
+    transition: all 0.3s;text-indent: -9999px;
+    width:20px;height:20px;display: block;position: absolute;right:0.5rem;top:0.5rem;cursor: pointer;
+    &:before,&:after{
+      height: 2px;width: 14px;content: '';background:$color-gray-9;
+      position: absolute;left:50%;top:50%;margin-left:-7px;margin-top: -1px;
+      transform-origin: 50% 50%;
+      transform: rotate(45deg);
+    }
+    &:after{
+      transform: rotate(-45deg);
+    }
+    &:hover{
+      transform: rotate(180deg);
+    }
+  }
+  .msg-content{
+    padding:2rem 1rem;
+
+  }
+  textarea{ width: 80%;}
+  .msg-action{
+    height:3rem;line-height:3rem;font-size: 16px;  text-align: center;border-top: 1px solid $color-gray-c;
+    div{height: 100%}
+    button{
+      display:inline-block;padding:0 10px;border:none;line-height:100%;height:100%;outline:none;text-align: center; cursor: pointer;font-size: 14px;
+      width: 50%;background-color: $color-blue-4c7;color: $white;
+      font-size: 1.6rem;
+      &.ok{}
+      &.cancel{background-color: $color-gray-c;}
+      &.disabled{background-color: $color-gray-9;cursor:default;}
+    }
+
+  }
+  .other{
+    margin-top: -1rem;padding:0 1rem 1rem;text-align: left;
+  }
+
+
+}

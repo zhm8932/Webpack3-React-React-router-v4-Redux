@@ -15,6 +15,7 @@ import NewsDetail from './NewsDetail'
 import CnodeList from './CnodeList'
 import CnodeDetail from './CnodeDetail'
 import UserContainer from './UserContainer'
+import ContactContainer from './ContactContainer'
 
 import fetchs from '../libs/utils/fetch';
 
@@ -48,6 +49,7 @@ const Main = ()=>(
 			<Route exact path="/cnode" component={CnodeList}/>
 			<Route path="/cnode/article/:id" component={CnodeDetail}/>
 			<Route path="/user/:id" component={UserContainer}/>
+			<Route path="/contacts" component={ContactContainer}/>
 		</div>
 	</Router>
 )

@@ -23,6 +23,7 @@ class NavBar extends React.Component{
 const mapDispatchToProps=(dispatch,ownProps)=>({
 	changeArticleType:(tab)=>{
 		console.log("修改分类:",tab)
+		// this.scrollTop = 0;
 		dispatch(getCnodeList({tab,page:1,limit:10}))
 	}
 })

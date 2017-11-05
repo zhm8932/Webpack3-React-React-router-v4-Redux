@@ -3,37 +3,34 @@
  */
 
 import { combineReducers } from 'redux'
-const cnodeList = (state = {data:[],isFetching:false,isEnd:true,pageIndex:1,articleType:'all'},action)=>{
-	console.log("statestate:",state,"action:",action)
+const cnodeList = (state = {data:[],isFetching:false,isEnd:true,page:1,articleType:'all'},action)=>{
+	// console.log("statestate:",state,"action:",action)
 	switch (action.type){
 		case 'REQUEST_CNODE_LIST':
 			return {
 				...state,
 				isFetching:true,
-				isEnd:false,
-				// articleType:action.articleType
+				isEnd:action.isEnd||false,
+				page:state.page,
+				articleType:action.articleType||state.articleType
 			}
-			// return {
-			// 	data:cnodeList,
-			// 	isFetching:true,
-			// 	pageIndex,
-			// 	articleType:action.articleType||articleType
-			// }
 		case 'CNODE_LIST':
 			return {
 				...state,
 				data:action.cnodeList||[],
 				isFetching:false,
 				isEnd:true,
-				pageIndex:action.pageIndex,
-				// articleType
+				page:action.page||state.page,
+				articleType:action.articleType||state.articleType
 			}
 		case 'CNODE_LIST_MORE':
 			return {
 				data:[...state.data,...action.cnodeList],
 				isFetching:false,
 				isEnd:true,
-				// pageIndex,
+				page:action.page||state.page,
+				articleType:action.articleType||state.articleType
+				// page,
 				// articleType
 			}
 		case 'CHANGE_ARTICLE_TYPE':

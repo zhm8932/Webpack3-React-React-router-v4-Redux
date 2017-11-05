@@ -11,7 +11,7 @@ router.use(function (req,res,next) {
 })
 
 // router.get('/',Requests.get_banner, Handlers.index);
-router.get('/abouts', Handlers.abouts);
+// router.get('/abouts', Handlers.abouts);
 router.get('/jops',Requests.get_jops_position,Requests.get_jops_list,Handlers.jops);
 
 router.get('/getJopList',Requests.get_jops_list);
@@ -20,7 +20,7 @@ router.get('/getAllProvinces',Middlewares.get_all_provinces);
 router.get('/getCitys',Middlewares.get_citys);
 
 //留言
-router.get('/contacts',Handlers.contacts);
+// router.get('/contacts',Handlers.contacts);
 router.post('/saveCustomerNote',Requests.save_customer_note);
 router.get('/getCaptcha',Requests.get_captcha);
 router.post('/getCaptcha',Requests.get_captcha_base64);

@@ -51,7 +51,7 @@ var csp = require('helmet-csp');
 // 	}
 // }))
 
-app.use('/news', news);
+// app.use('/news', news);
 
 app.use('/', index);
 

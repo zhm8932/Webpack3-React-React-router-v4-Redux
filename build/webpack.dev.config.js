@@ -43,7 +43,7 @@ module.exports = merge(webpackConfig,{
 	],
 	devServer:{
 		proxy:{
-			'*':'http://localhost:3008'
+			'*':'http://localhost:3010'
 		},
 		contentBase: [PUBLIC_PATH],        //默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录，告诉服务器从哪里提供内容
 		inline:true,    //设置为true，当源文件改变时会自动刷新页面

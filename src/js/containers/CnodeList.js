@@ -23,11 +23,14 @@ class CnodeList extends React.Component{
 	constructor(props){
 		super(props);
 		// console.log("this:",this)
-		// this.scrollTop=110;
+		this.scrollTop=0;
 		this.handleScroll = this.handleScroll.bind(this)
 	}
+	componentWillMount(){
+		console.log("componentWillMount:")
+	}
 	componentDidMount(){
-		console.log("componentDidMount 社区:",this.props,"this.refs.listBox:",this.refs.listBox)
+		console.log("componentDidMount 社区:",this.props,"this:",this)
 		this.props.getCnodeList({
 			page:1,
 			limit:10,
@@ -38,7 +41,12 @@ class CnodeList extends React.Component{
 		// document.addEventListener('scroll',this.handleScroll)
 
 		this.windowHeight = getWindowHeight();
-		document.addEventListener('scroll',this.handleScroll)
+		const scrollTop = getScrollTop();
+		document.addEventListener('scroll',this.handleScroll);
+		if(scrollTop){
+			console.log("scrollTop3333333:",scrollTop)
+			window.scrollTo(0,scrollTop)
+		}
 
 		if (this.refs.listBox) {
 			console.log("getScrollHeight:",getScrollHeight())
@@ -52,7 +60,18 @@ class CnodeList extends React.Component{
 		}
 	}
 	componentWillUnmount(){
-		// document.removeEventListener('scroll', this.handleScroll);
+
+		document.removeEventListener('scroll', this.handleScroll);
+		this.scrollTop = getScrollTop();
+	}
+	componentWillReceiveProps(nextProps){
+		console.log("nextProps222222222:",nextProps)
+
+	}
+	componentDidUpdate(){
+		console.log("this.scrollTop:",this.scrollTop)
+
+		this.scrollTop&&window.scrollTo(0,this.scrollTop)
 	}
 	handleScroll(event){
 		// console.log("网页可见区域高222：",document.body.clientHeight,"document.body.offsetHeight:",document.body.offsetHeight)
@@ -75,15 +94,23 @@ class CnodeList extends React.Component{
 		// console.log("getScrollTop:",getScrollTop(),"差值",scrollHeight-this.windowHeight-scrollTop)
 
 		let {cnodeList} = this.props;
-		if(scrollTop>=scrollHeight-this.windowHeight){
-			console.log("加载下一页:",cnodeList.isEnd)
-			this.props.getDataStart()
-			if(!cnodeList.isEnd){
+		if(scrollTop>=scrollHeight-this.windowHeight-240){
+			if(cnodeList.isEnd){
+				this.props.getDataStart()
+				console.log("加载下一页:",cnodeList.isEnd,"scrollTop：",scrollTop,"scrollHeight：",scrollHeight)
 				this.props.getCnodeListMore({
-					page:2,
+					page:cnodeList.page+1,
 					limit:10,
 					tab:'all'
 				});
+				this.scrollTop = scrollTop;
+				if(scrollTop){
+					console.log("scrollTop3333333:",scrollTop)
+
+				}
+				if(!cnodeList.isEnd){
+
+				}
 			}
 		}
 
@@ -95,7 +122,7 @@ class CnodeList extends React.Component{
 		let {cnodeList,...props} = this.props;
 		let {data} = cnodeList;
 		props.ref = node => { this.selfComponent = node }
-
+		window.scrollTo(0, 500)
 		return(
 			<div className="wrapper list-wrapper" ref='listBox' >
 				<NavBar articleType={cnodeList.articleType} articleTypeList={articleTypeList}/>

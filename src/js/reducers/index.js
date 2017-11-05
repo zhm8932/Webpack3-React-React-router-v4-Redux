@@ -5,9 +5,13 @@ import {combineReducers} from 'redux';
 import cart from './cart';
 import count from './count';
 import cnode from './cnode';
+import dialog from './dialog';
+import msg from './msg';
 
 export default combineReducers({
 	cart,
 	count,
-	cnode
+	cnode,
+	dialog,
+	msg
 })
