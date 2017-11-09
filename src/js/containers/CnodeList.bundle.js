@@ -38,14 +38,14 @@ class CnodeList extends React.Component{
 		});
 		const scrollEl = window;
 		// console.log("this.refs.listBox:",this.refs.listBox)
-		// document.addEventListener('scroll',this.handleScroll)
 
-		this.windowHeight = getWindowHeight();
+
 		const scrollTop = getScrollTop();
 		document.addEventListener('scroll',this.handleScroll);
+
 		if(scrollTop){
-			console.log("scrollTop3333333:",scrollTop)
-			window.scrollTo(0,scrollTop)
+			console.log("scrollTop3333333:",scrollTop,this.windowHeight)
+			// window.scrollTo(0,scrollTop)
 		}
 
 		if (this.refs.listBox) {
@@ -63,15 +63,16 @@ class CnodeList extends React.Component{
 
 		document.removeEventListener('scroll', this.handleScroll);
 		this.scrollTop = getScrollTop();
+		window.scrollTo(0,this.scrollTop)
 	}
 	componentWillReceiveProps(nextProps){
 		console.log("nextProps222222222:",nextProps)
 
 	}
 	componentDidUpdate(){
-		console.log("this.scrollTop:",this.scrollTop)
+		console.log("this.scrollTop--componentDidUpdate:",this.scrollTop)
 
-		this.scrollTop&&window.scrollTo(0,this.scrollTop)
+		// this.scrollTop&&window.scrollTo(0,this.scrollTop)
 	}
 	handleScroll(event){
 		// console.log("网页可见区域高222：",document.body.clientHeight,"document.body.offsetHeight:",document.body.offsetHeight)
@@ -81,67 +82,59 @@ class CnodeList extends React.Component{
 		// let scrollTop = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
 		// offset = this.calcTop(el) + el.offsetHeight - scrollTop - window.innerHeight
 
+		this.windowHeight = getWindowHeight();
+
 		const scrollTop = getScrollTop();
 		const scrollHeight = getScrollHeight();
 		// console.log("window.pageYOffset:",window.pageYOffset,"event",event)
 		// console.log("window.pageYOffset:",window.pageYOffset,"windowHeight:",windowHeight)
-		const clientHeight = event.target.clientHeight
-		// const scrollHeight = event.target.scrollHeight
-		// const scrollTop = event.target.scrollTop
-		const isBottom = (clientHeight + scrollTop === scrollHeight)
 
-		// console.log("getScrollHeight:",getScrollHeight())
+
+		// console.log("getWindowHeight:",getWindowHeight())
 		// console.log("getScrollTop:",getScrollTop(),"差值",scrollHeight-this.windowHeight-scrollTop)
 
 		let {cnodeList} = this.props;
-		if(scrollTop>=scrollHeight-this.windowHeight-240){
+		const isBottom = (scrollTop + this.windowHeight === scrollHeight)
+		console.log('is bottom:' + isBottom,"scrollTop:",scrollTop,"scrollHeight：",scrollHeight,"this.windowHeight:",this.windowHeight )
+
+		if(isBottom){
 			if(cnodeList.isEnd){
 				this.props.getDataStart()
 				console.log("加载下一页:",cnodeList.isEnd,"scrollTop：",scrollTop,"scrollHeight：",scrollHeight)
 				this.props.getCnodeListMore({
 					page:cnodeList.page+1,
 					limit:10,
-					tab:'all'
+					tab:cnodeList.articleType
 				});
 				this.scrollTop = scrollTop;
-				if(scrollTop){
-					console.log("scrollTop3333333:",scrollTop)
 
-				}
-				if(!cnodeList.isEnd){
-
-				}
 			}
 		}
 
-		// console.log("网页正文全文高：",document.documentElement.clientHeight,document.body.clientHeight,document.documentElement.scrollTop)
-		// console.log('is bottom:' + isBottom,"scrollTop:",scrollTop,"clientHeight：",clientHeight )
 	}
 	render(){
-		console.log("cnode:",this.props);
+		console.log("cnode11111111111:",this.props);
 		let {cnodeList,...props} = this.props;
 		let {data} = cnodeList;
 		props.ref = node => { this.selfComponent = node }
-		window.scrollTo(0, 500)
 		return(
 			<div className="wrapper list-wrapper" ref='listBox' >
 				<NavBar articleType={cnodeList.articleType} articleTypeList={articleTypeList}/>
 				<div className="lists">
-					{
-						cnodeList.isFetching?
-							<p>加载中……</p>:
-							<ul>
-								{data.map(item=>
-									<li>
-										<img src={item.author.avatar_url}/>
-										<span title="回复数">{item.reply_count}/</span>
-										<span title="点击数">{item.visit_count}</span>
-										【{articleTypeList[item.tab]}】
-										<Link to={'/cnode/article/'+item.id}>{item.title}</Link>
-									</li>
-								)}
-							</ul>
-					}
+					<ul>
+						{data.map(item=>
+							<li key={item.id}>
+								<img src={item.author.avatar_url}/>
+								<span title="回复数">{item.reply_count}/</span>
+								<span title="点击数">{item.visit_count}</span>
+								【{articleTypeList[item.tab]}】
+								<Link to={'/cnode/article/'+item.id}>{item.title}</Link>
+							</li>
+						)}
+					</ul>
+				</div>
+				<div className="list-footer">
+					{cnodeList.isFetching?<p>加载中……</p>:''}
 				</div>
 			</div>
 		)

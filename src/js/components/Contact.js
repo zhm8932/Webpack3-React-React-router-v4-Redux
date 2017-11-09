@@ -1,5 +1,6 @@
 import Tloader from 'react-touch-loader';
-
+import '../../sass/contact.scss'
+import {getWindowHeight} from '../libs/utils/getSize'
 class Contact extends React.Component {
 	constructor() {
 		super();
@@ -42,8 +43,15 @@ class Contact extends React.Component {
 				listLen: 9,
 				hasMore: 1,
 				initializing: 2, // initialized
+			},function () {
+				var height = getWindowHeight()-160
+				// console.log("getWindowHeight:",height,this.refs['view-box']);
+				// this.refs['view-box'].style.height = height;
 			});
 		}, 2e3);
+	}
+	componentDidUpdate(){
+
 	}
 	toggleCanRefresh() {
 		this.setState({ canRefreshResolve: !this.state.canRefreshResolve });
@@ -64,7 +72,7 @@ class Contact extends React.Component {
 			}
 		}
 		return (
-			<div className="view">
+			<div className="view" ref='view-box'>
 				<h1>react-touch-loader {refreshedAt.toString().substr(7)}</h1>
 
 				<Tloader className="main"
@@ -75,17 +83,18 @@ class Contact extends React.Component {
 					<ul>{list}</ul>
 				</Tloader>
 
-				<h2>
-					<a href="https://github.com/Broltes/react-touch-loader">view source</a>
-					<label>
-						can refresh resolve
-						<input type="checkbox"
-							   checked={canRefreshResolve}
-							   onChange={(e) => this.toggleCanRefresh(e)} />
-					</label>
-				</h2>
 			</div>
 		);
+
+		// <h2>
+		// 	<a href="https://github.com/Broltes/react-touch-loader">view source</a>
+		// 	<label>
+		// 		can refresh resolve
+		// 		<input type="checkbox"
+		// 		       checked={canRefreshResolve}
+		// 		       onChange={(e) => this.toggleCanRefresh(e)} />
+		// 	</label>
+		// </h2>
 	}
 }
 

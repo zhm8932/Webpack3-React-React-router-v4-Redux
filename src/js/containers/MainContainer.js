@@ -2,6 +2,7 @@
  * Created by haiming.zeng on 2017/10/31.
  */
 
+import Bundle from '../libs/Bundle';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -9,13 +10,21 @@ import {
 	NavLink
 } from 'react-router-dom';
 import Index from './Index'
-import About from './About'
-import News from './News'
-import NewsDetail from './NewsDetail'
-import CnodeList from './CnodeList'
-import CnodeDetail from './CnodeDetail'
-import UserContainer from './UserContainer'
-import ContactContainer from './ContactContainer'
+import About from './About.bundle'
+import News from './News.bundle'
+import NewsDetail from './NewsDetail.bundle'
+import CnodeList from './CnodeList.bundle'
+import CnodeDetail from './CnodeDetail.bundle'
+// import CnodeDetail from './CnodeDetail'
+import UserContainer from './UserContainer.bundle'
+import ContactContainer from './ContactContainer.bundle'
+
+const lazyLoadComponent = (comp) => (props) => (
+	<Bundle load={comp}>
+		{(Container) => <Container {...props}/>}
+	</Bundle>
+)
+
 
 import fetchs from '../libs/utils/fetch';
 
@@ -43,13 +52,13 @@ const Main = ()=>(
 				</div>
 			</header>
 			<Route exact path="/" component={Index}/>
-			<Route path="/about" component={About}/>
-			<Route exact path="/news" component={News}/>
-			<Route path="/news/article/:id" component={NewsDetail}/>
-			<Route exact path="/cnode" component={CnodeList}/>
-			<Route path="/cnode/article/:id" component={CnodeDetail}/>
-			<Route path="/user/:id" component={UserContainer}/>
-			<Route path="/contacts" component={ContactContainer}/>
+			<Route path="/about" component={lazyLoadComponent(About)}/>
+			<Route exact path="/news" component={lazyLoadComponent(News)}/>
+			<Route path="/news/article/:id" component={lazyLoadComponent(NewsDetail)}/>
+			<Route exact path="/cnode" component={lazyLoadComponent(CnodeList)}/>
+			<Route path="/cnode/article/:id" component={lazyLoadComponent(CnodeDetail)}/>
+			<Route path="/user/:id" component={lazyLoadComponent(UserContainer)}/>
+			<Route path="/contacts" component={lazyLoadComponent(ContactContainer)}/>
 		</div>
 	</Router>
 )

@@ -3,12 +3,15 @@
  */
 import '../../sass/news.scss'
 
-import { getVisibleProducts } from '../reducers/count'
+import { getVisibleProducts,getProduct} from '../reducers/count'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
+
+import {getAllProducts} from '../actions';
 class NewsList extends React.Component{
 	componentDidMount(){
-		console.log("count:",this.props)
+		console.log("count11333:",this.props)
+		this.props.getAllProducts()
 	}
 	render(){
 		let {count} = this.props;
@@ -23,7 +26,7 @@ class NewsList extends React.Component{
 						<ul>
 							{count.map(item=>
 								<li>
-									<Link to="/news/article/79">
+									<Link to={`/news/article/${item.id}`}>
 										<div className="img"><img src={`/images/${item.src}`} alt="【理上网来•喜迎十九大】扶贫也创新！十八大以来年均减贫人数超1300万 获历史突破"/></div>
 										<p>{item.name}</p>
 									</Link>
@@ -41,5 +44,6 @@ const mapStateToProps = state=>({
 	count:getVisibleProducts(state.count)
 })
 export default connect(
-	mapStateToProps
+	mapStateToProps,
+	{getAllProducts}
 )(NewsList)

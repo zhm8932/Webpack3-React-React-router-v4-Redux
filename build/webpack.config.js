@@ -40,6 +40,7 @@ module.exports = {
 	output: {
 		path: path.join(ROOT,'public'),
 		filename: "js/[name].js",
+		chunkFilename:'js/[name].[chunkhash:5].js',
 		publicPath:publicPath
 	},
 	// devtool: 'source-map',
@@ -105,6 +106,20 @@ module.exports = {
 					loader: "css-loader"
 				}, {
 					loader: "less-loader"
+				}]
+			},
+			{
+				test: /\.bundle\.js$/, // 通过文件名后缀自动处理需要转成bundle的文件
+				include: /src/,
+				exclude: /node_modules/,
+				use: [{
+					loader: 'bundle-loader',
+					options: {
+						name: '[name]',
+						lazy: true
+					}
+				}, {
+					loader: 'babel-loader',
 				}]
 			}
 		]

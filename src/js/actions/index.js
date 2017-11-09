@@ -8,7 +8,7 @@ const receiveProducts = products=>({
 	products:products
 })
 export const getAllProducts = () => dispatch => {
-	fetch('../api/shop.json')
+	fetch('/api/shop.json')
 	.then(response => {
 		return response.json()
 	})

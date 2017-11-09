@@ -28,7 +28,7 @@ console.log("store:",store)
 console.log("state:",store.getState())
 import 'sass/globals.scss';
 
-// store.dispatch(getAllProducts())
+store.dispatch(getAllProducts())
 ReactDOM.render(
 	<Provider store={store}>
 		<MainContainer/>

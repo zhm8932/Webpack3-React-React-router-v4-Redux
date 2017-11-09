@@ -25,7 +25,8 @@ const cnodeList = (state = {data:[],isFetching:false,isEnd:true,page:1,articleTy
 			}
 		case 'CNODE_LIST_MORE':
 			return {
-				data:[...state.data,...action.cnodeList],
+				// data:[...state.data,...action.cnodeList],
+				data:state.data.concat(action.cnodeList),
 				isFetching:false,
 				isEnd:true,
 				page:action.page||state.page,

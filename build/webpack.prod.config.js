@@ -66,6 +66,10 @@ module.exports = merge(webpackConfig,{
 				from: path.join(SRC_PATH,'images'),
 				to:path.join(PUBLIC_PATH,'images'),
 			},
+			{
+				from: path.join(SRC_PATH,'js/api'),
+				to:path.join(PUBLIC_PATH,'api'),
+			}
 
 		] ),
 	],
