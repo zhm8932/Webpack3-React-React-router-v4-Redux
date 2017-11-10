@@ -2,7 +2,9 @@
  * Created by haiming.zeng on 2017/10/27.
  */
 import * as types from '../constants/ActionTypes'
-import fetchs from '../libs/utils/fetch';
+import fetchs,{CALL_API} from '../libs/utils/fetch';
+
+console.log("CALL_API:",CALL_API)
 const receiveProducts = products=>({
 	type:types.RECEIVE_PRODUCTS,
 	products:products

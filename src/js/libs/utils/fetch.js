@@ -3,6 +3,8 @@
  */
 import 'whatwg-fetch'
 
+export const CALL_API = Symbol('Call API')
+
 const fetchs = ({url,method='GET',data={}})=>{
 	let query = '';
 	for (let i in data) {

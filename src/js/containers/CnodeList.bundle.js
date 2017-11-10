@@ -3,7 +3,7 @@
  */
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import fetchs from '../libs/utils/fetch';
+import fetchs,{CALL_API} from '../libs/utils/fetch';
 import {getCnodeList,getCnodeListMore,getDataStart} from '../actions'
 
 import {getScrollTop,getWindowHeight,getScrollHeight} from '../libs/utils/getSize';
