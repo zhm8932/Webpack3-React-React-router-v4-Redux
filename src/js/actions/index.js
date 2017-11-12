@@ -91,3 +91,21 @@ export const handleShow = (type,content='')=>({
 	type:type,
 	content
 })
+
+export const moviesList=json=>({
+	type:'MOVE_LIST',
+	// userDetail:json,
+	json:json
+})
+
+export const getMoviesList = id=>dispatch=>{
+	// dispatch({type:'REQUEST_USER_DETAIL'})
+	// fetchs({url:'https://api.douban.com/v2/movie/in_theaters'})
+	// 	.then(json=>dispatch(moviesList(json)))
+	fetchs({url:'/apis/v2/movie/in_theaters',mode: "no-cors"})
+	// fetchs({url:'/apis/v2/book/1220562',mode: "no-cors"})
+	// fetchs({url:'/apis/comments'})
+		.then(json=>dispatch(moviesList(json)))
+	fetchs({url:'/movies/list'})
+		.then(json=>dispatch(moviesList(json)))
+}

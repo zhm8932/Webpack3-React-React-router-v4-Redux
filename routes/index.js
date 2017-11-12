@@ -6,6 +6,7 @@ var Middlewares = require('../requests/middlerware.requests');
 
 /* GET home page. */
 router.use(function (req,res,next) {
+	logger.info("req:",req.method,req.url);
 	logger.info("originalUrl:",req.originalUrl,JSON.stringify(req.body));
 	next();
 })

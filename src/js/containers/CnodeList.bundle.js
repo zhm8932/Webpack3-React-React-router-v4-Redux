@@ -33,7 +33,7 @@ class CnodeList extends React.Component{
 		console.log("componentDidMount 社区:",this.props,"this:",this)
 		this.props.getCnodeList({
 			page:1,
-			limit:10,
+			limit:20,
 			tab:'all'
 		});
 		const scrollEl = window;
@@ -42,16 +42,16 @@ class CnodeList extends React.Component{
 
 		const scrollTop = getScrollTop();
 		document.addEventListener('scroll',this.handleScroll);
-
+		console.log("scrollTop3333333:",scrollTop,getWindowHeight())
 		if(scrollTop){
-			console.log("scrollTop3333333:",scrollTop,this.windowHeight)
+
 			// window.scrollTo(0,scrollTop)
 		}
 
 		if (this.refs.listBox) {
 			console.log("getScrollHeight:",getScrollHeight())
 			console.log("getScrollTop:",getScrollTop())
-			console.log("getWindowHeight:",getWindowHeight(),"this.windowHeight:",this.windowHeight)
+			console.log("getWindowHeight:",getWindowHeight(),"this.windowHeight:",this.windowHeight,document.documentElement.clientHeight,"clientHeight:",document.body.clientHeight,"window.innerHeight:",window.innerHeight)
 			// console.log("监听滚动scrollEl：",scrollEl,document.body.clientHeight)
 			// console.log("网页可见区域高：",document.body.clientHeight,"document.body.offsetHeight:",document.body.offsetHeight)
 			// console.log("screen：",document.body.scrollHeight,"window.screen:",window.screen)
@@ -66,7 +66,7 @@ class CnodeList extends React.Component{
 		window.scrollTo(0,this.scrollTop)
 	}
 	componentWillReceiveProps(nextProps){
-		console.log("nextProps222222222:",nextProps)
+		console.log("nextProps222222222:",nextProps,getWindowHeight())
 
 	}
 	componentDidUpdate(){
@@ -94,8 +94,8 @@ class CnodeList extends React.Component{
 		// console.log("getScrollTop:",getScrollTop(),"差值",scrollHeight-this.windowHeight-scrollTop)
 
 		let {cnodeList} = this.props;
-		const isBottom = (scrollTop + this.windowHeight === scrollHeight)
-		console.log('is bottom:' + isBottom,"scrollTop:",scrollTop,"scrollHeight：",scrollHeight,"this.windowHeight:",this.windowHeight )
+		const isBottom = (scrollTop + this.windowHeight >= scrollHeight-10)
+		console.log('is bottom:' + isBottom,"scrollTop:",scrollTop,"scrollHeight：",scrollHeight,"windowHeight:",this.windowHeight,scrollHeight-scrollTop )
 
 		if(isBottom){
 			if(cnodeList.isEnd){
@@ -103,7 +103,7 @@ class CnodeList extends React.Component{
 				console.log("加载下一页:",cnodeList.isEnd,"scrollTop：",scrollTop,"scrollHeight：",scrollHeight)
 				this.props.getCnodeListMore({
 					page:cnodeList.page+1,
-					limit:10,
+					limit:20,
 					tab:cnodeList.articleType
 				});
 				this.scrollTop = scrollTop;

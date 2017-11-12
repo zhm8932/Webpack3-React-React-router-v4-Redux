@@ -5,7 +5,7 @@ import 'whatwg-fetch'
 
 export const CALL_API = Symbol('Call API')
 
-const fetchs = ({url,method='GET',data={}})=>{
+const fetchs = ({url,method='GET',mode='',data={}})=>{
 	let query = '';
 	for (let i in data) {
 		query += `${i}=${data[i]}&`;
@@ -16,6 +16,7 @@ const fetchs = ({url,method='GET',data={}})=>{
 	}
 	return fetch(url,{
 		method,
+		mode:mode,
 		headers:{
 			'Content-Type': 'application/json'
 		},

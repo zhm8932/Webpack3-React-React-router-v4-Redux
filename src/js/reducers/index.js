@@ -7,11 +7,13 @@ import count from './count';
 import cnode from './cnode';
 import dialog from './dialog';
 import msg from './msg';
+import movies from './movies';
 
 export default combineReducers({
 	cart,
 	count,
 	cnode,
 	dialog,
-	msg
+	msg,
+	movies
 })

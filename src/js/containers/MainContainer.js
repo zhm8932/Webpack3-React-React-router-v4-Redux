@@ -9,7 +9,7 @@ import {
 	Link,
 	NavLink
 } from 'react-router-dom';
-import Index from './Index'
+import Index from './Index.bundle'
 import About from './About.bundle'
 import News from './News.bundle'
 import NewsDetail from './NewsDetail.bundle'
@@ -18,6 +18,7 @@ import CnodeDetail from './CnodeDetail.bundle'
 // import CnodeDetail from './CnodeDetail'
 import UserContainer from './UserContainer.bundle'
 import ContactContainer from './ContactContainer.bundle'
+import Movies from './Movies.bundle'
 
 const lazyLoadComponent = (comp) => (props) => (
 	<Bundle load={comp}>
@@ -48,10 +49,11 @@ const Main = ()=>(
 						<NavLink to="/news" activeClassName="on">企业动态</NavLink>
 						<NavLink to="/cnode" activeClassName="on">cnode社区</NavLink>
 						<NavLink to="/contacts" activeClassName="on">联系我们</NavLink>
+						<NavLink to="/movies" activeClassName="on">豆瓣电影</NavLink>
 					</nav>
 				</div>
 			</header>
-			<Route exact path="/" component={Index}/>
+			<Route exact path="/" component={lazyLoadComponent(Index)}/>
 			<Route path="/about" component={lazyLoadComponent(About)}/>
 			<Route exact path="/news" component={lazyLoadComponent(News)}/>
 			<Route path="/news/article/:id" component={lazyLoadComponent(NewsDetail)}/>
@@ -59,6 +61,7 @@ const Main = ()=>(
 			<Route path="/cnode/article/:id" component={lazyLoadComponent(CnodeDetail)}/>
 			<Route path="/user/:id" component={lazyLoadComponent(UserContainer)}/>
 			<Route path="/contacts" component={lazyLoadComponent(ContactContainer)}/>
+			<Route path="/movies" component={lazyLoadComponent(Movies)}/>
 		</div>
 	</Router>
 )

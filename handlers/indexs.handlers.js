@@ -3,6 +3,7 @@
  */
 
 exports.index = function (req,res,next) {
+	console.log("首页数据")
 	res.render('app', { title: 'react redux react-router-dom' });
 	// res.render('index', { title: '深圳市前海明日科技科技咨询责任有限公司' });
 }

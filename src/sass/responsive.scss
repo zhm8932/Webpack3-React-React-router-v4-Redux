@@ -12,8 +12,12 @@
 }
 
 @media only screen and (max-width: 768px){
+  .logo{display: none;}
   .wrapper{width: 100%}
   .fixed{margin: 0px;left: 0px;}
+  .nav{
+    text-align: left;top: auto;
+  }
 }
 
 @media only screen and (width: 320px){

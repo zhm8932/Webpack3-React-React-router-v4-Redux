@@ -32,7 +32,8 @@ export function getScrollHeight() {
 
 //浏览器窗口高度
 export const getWindowHeight = ()=>(
-	document.documentElement.scrollTop==0?
-		document.body.clientHeight:
-		document.documentElement.clientHeight
+	window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+	// document.documentElement.scrollTop==0?
+	// 	document.body.clientHeight:
+	// 	document.documentElement.clientHeight
 );
