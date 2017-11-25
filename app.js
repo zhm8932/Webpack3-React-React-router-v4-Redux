@@ -63,6 +63,7 @@ app.use('/juhe', proxy({
 
 var csp = require('helmet-csp');
 
+
 //各类资源文件的白名单配置
 // app.use(csp({
 // 	directives: {
@@ -74,6 +75,36 @@ var csp = require('helmet-csp');
 // 		objectSrc: ["'none'"],
 // 	}
 // }))
+
+//CSP是一个HTTP标头.防止不受信任的来源加载资源，帮助您减轻XSS风险
+//使用'self'来允许来自相同来源的图像资源
+/*
+ 'self'允许从相同的来源加载任何资源- https://ponyfoo.com:443在本网站的情况下
+ 'none' 防止为当前指令加载任何资源
+ 'unsafe-inline'允许内联脚本（和样式）加载- 这包括内联事件处理程序，如onclick
+ 'unsafe-eval'允许eval和朋友评估JavaScript代码的任意字符串
+* */
+
+const images = [
+	`https:`,
+	`data:`
+]
+
+app.use(csp({
+	directives: {
+		defaultSrc: ["'self'"],
+		scriptSrc: ["'self'","'unsafe-inline'"],
+		styleSrc: ["'self'","'unsafe-inline'"],
+		imgSrc: ["'self'",'apis.juhe.cn','juhe.cn','img1.doubanio.com','img3.doubanio.com','doubanio.com','data:',...images],
+		fontSrc: ["'self'",'data:'],
+		connectSrc: ["'self'",'cnodejs.org'],
+		// sandbox: ['allow-forms', 'allow-scripts'],
+		reportUri: '/report-violation',
+		objectSrc: ["'none'"],
+	},
+	reportOnly: false
+}))
+
 
 // app.use('/news', news);
 app.use('/movies', movies);
