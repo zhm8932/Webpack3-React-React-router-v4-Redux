@@ -50,6 +50,17 @@ app.use('/apis', proxy({
 	logLevel:'debug'
 }));
 
+app.use('/juhe', proxy({
+	target:'http://apis.juhe.cn',
+	// target: 'http://jsonplaceholder.typicode.com',
+	pathRewrite: {
+		'^/juhe': ''   //需要rewrite重写的,
+	},
+	secure: false,
+	changeOrigin: true, //是否跨域
+	logLevel:'debug'
+}));
+
 var csp = require('helmet-csp');
 
 //各类资源文件的白名单配置

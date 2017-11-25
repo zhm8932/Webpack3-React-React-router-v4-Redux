@@ -19,6 +19,8 @@ import CnodeDetail from './CnodeDetail.bundle'
 import UserContainer from './UserContainer.bundle'
 import ContactContainer from './ContactContainer.bundle'
 import Movies from './Movies.bundle'
+import MoviesArticle from './MoviesArticle.bundle'
+import MoviesBook from './MoviesBook.bundle'
 
 const lazyLoadComponent = (comp) => (props) => (
 	<Bundle load={comp}>
@@ -61,7 +63,9 @@ const Main = ()=>(
 			<Route path="/cnode/article/:id" component={lazyLoadComponent(CnodeDetail)}/>
 			<Route path="/user/:id" component={lazyLoadComponent(UserContainer)}/>
 			<Route path="/contacts" component={lazyLoadComponent(ContactContainer)}/>
-			<Route path="/movies" component={lazyLoadComponent(Movies)}/>
+			<Route exact path="/movies" component={lazyLoadComponent(Movies)}/>
+			<Route path="/movies/article/:id" component={lazyLoadComponent(MoviesArticle)}/>
+			<Route path="/movies/book/:id" component={lazyLoadComponent(MoviesBook)}/>
 		</div>
 	</Router>
 )

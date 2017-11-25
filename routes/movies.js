@@ -84,6 +84,6 @@ router.get('/list',function (req,res,next) {
 
 });
 // router.get('/list(/:catId)?',Requests.get_news_category,Requests.get_news_list, Handlers.list);
-router.get('/article/:id',Requests.get_news_detail, Handlers.article);
+// router.get('/article/:id',Requests.get_news_detail, Handlers.article);
 
 module.exports = router;

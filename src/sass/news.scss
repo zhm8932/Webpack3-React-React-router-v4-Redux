@@ -10,20 +10,7 @@
     a{position: absolute;right: 0px;top: 0px;}
   }
 }
-.list{
-  ul{
-    margin-left: -3.3%;padding-top: 20px;
-    li{
-      width: 30%;margin-left: 3.3%;float: left;
-      padding:0 0 20px 0;
-      img{width: 100%}
-      p{
-        padding: 8px 0;height: 48px;
-      }
-      a:hover{color: $color-orange-e6a;}
-    }
-  }
-}
+
 .article{
   header{
     padding: 3rem 0 2rem;text-align: center;border-bottom: 1px solid $color-gray-9;

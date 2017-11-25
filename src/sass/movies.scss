@@ -1,0 +1,28 @@
+@import "includes/settings";
+.movie-article{
+  h2{font-size: 3rem;line-height:4rem;}
+  h3{
+    border-top: 1px dashed $color-gray-c;margin-top: 1rem;padding-top: 1rem;
+  }
+  .block{
+    border-bottom: 1px solid $color-gray-c;margin-bottom: 2rem;padding-bottom: 2rem;
+    dt{width: 110px;}
+    dd{width: calc(100% - 140px)}
+  }
+}
+.article{
+  width: 550px;float: left;
+  dt{
+    width: 200px;float: left;margin-right: 10px;
+    img{width: 100%}
+  }
+  dd{
+    float: left;width: 330px;
+  }
+  p a{padding-right: 10px;}
+}
+.casts{
+  figure{
+    width: 15%;float: left;margin-right:3%;
+  }
+}

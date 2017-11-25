@@ -5,13 +5,31 @@ import {combineReducers}  from 'redux'
 
 const moveList = (state={},action)=>{
 	switch (action.type){
-		case 'MOVE_LIST':
+		case 'MOVIE_SUCCESS':
 			return action.json
 		default:
 			return state
 	}
 }
 
+const moveArticle = (state={},action)=>{
+	switch (action.type){
+		case 'MOVIE_ARTICLE_SUCCESS':
+			return action.json
+		default:
+			return state
+	}
+}
+const moveComments = (state={},action)=>{
+	switch (action.type){
+		case 'MOVIE_COMMENTS_SUCCESS':
+			return action.json
+		default:
+			return state
+	}
+}
 export default combineReducers({
-	moveList
+	moveList,
+	moveArticle,
+	moveComments
 })

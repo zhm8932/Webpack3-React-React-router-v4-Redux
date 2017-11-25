@@ -7,11 +7,12 @@ import { getVisibleProducts,getProduct} from '../reducers/count'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
 
-import {getAllProducts} from '../actions';
+import {getAllProducts,getUser} from '../actions';
 class NewsList extends React.Component{
 	componentDidMount(){
 		console.log("count11333:",this.props)
 		this.props.getAllProducts()
+		// this.props.getUser()
 	}
 	render(){
 		let {count} = this.props;
@@ -45,5 +46,5 @@ const mapStateToProps = state=>({
 })
 export default connect(
 	mapStateToProps,
-	{getAllProducts}
+	{getAllProducts,getUser}
 )(NewsList)

@@ -9,12 +9,14 @@ import {Provider} from 'react-redux';
 import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducers'
+import callApi from './middleware/callApi'
 
 import MainContainer from './containers/MainContainer'
 
 import {getAllProducts} from './actions';
 
-const middleware = [thunk];
+// const middleware = [thunk];
+const middleware = [thunk,callApi()];
 
 if(process.env.NODE_ENV!=='production'){
 	middleware.push(createLogger())
@@ -28,7 +30,7 @@ console.log("store:",store)
 console.log("state:",store.getState())
 import 'sass/globals.scss';
 
-store.dispatch(getAllProducts())
+// store.dispatch(getAllProducts())
 ReactDOM.render(
 	<Provider store={store}>
 		<MainContainer/>

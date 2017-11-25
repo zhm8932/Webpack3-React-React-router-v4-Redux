@@ -13,7 +13,7 @@
 
 @media only screen and (max-width: 768px){
   .logo{display: none;}
-  .wrapper{width: 100%}
+  .wrapper{width: 100%;box-sizing: border-box;}
   .fixed{margin: 0px;left: 0px;}
   .nav{
     text-align: left;top: auto;

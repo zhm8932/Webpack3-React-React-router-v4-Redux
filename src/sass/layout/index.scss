@@ -94,6 +94,20 @@
     &:hover{color: $color-orange-e6a;}
   }
 }
+.list{
+  ul{
+    margin-left: -3.3%;padding-top: 20px;
+    li{
+      width: 30%;margin-left: 3.3%;float: left;
+      padding:0 0 20px 0;
+      img{width: 100%}
+      p{
+        //padding: 8px 0;height: 48px;
+      }
+      a:hover{color: $color-orange-e6a;}
+    }
+  }
+}
 .reply-box{
   margin-top: 1rem;box-shadow: 0 0 1px  $color-gray-9;
   h2{
