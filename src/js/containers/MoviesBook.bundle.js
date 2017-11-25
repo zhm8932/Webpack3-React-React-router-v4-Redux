@@ -10,40 +10,21 @@ import appKey from '../libs/utils/appKey';
 
 console.log("appKey:",appKey)
 
-class MovieArticle extends React.Component{
-	componentDidMount(){
+@connect(
+	(state) => ({
+		bookList:state.books.bookList,
+	}),
+	{getBooks}
+)
 
+export default class MovieArticle extends React.Component{
+	componentDidMount(){
 		let {id} = this.props.match.params;
-		// this.props.getMoviesList();
 		console.log("props::::",this.props,"id111111111:",id);
 		this.props.getBooks({
 			url:'/juhe/goodbook/query',
 			data:{key:appKey.book,catalog_id:id,rn:10}
 		});
-	}
-	renderBooks(){
-		let {bookList} = this.props;
-		if(bookList.resultcode=='200'){
-			return (
-				<div>
-					<ul>
-						{bookList.result.map(item=>(
-							<li>
-								<Link to={`/movies/book/${item.id}`}>
-									{item.catalog}
-								</Link>
-							</li>
-						))}</ul>
-				</div>
-			)
-		}else{
-			return (
-				<div>
-					<h4>{bookList.reason}</h4>
-					<p>{bookList.error_code}</p>
-				</div>
-			)
-		}
 	}
 	render(){
 		console.log("moveArticle----:",this.props.moveArticle)
@@ -75,7 +56,7 @@ class MovieArticle extends React.Component{
 									<p><label>出版时间：</label>{item.bytime}</p>
 									<p><label>在线购买：</label>
 										{online.length&&online.map(arr=>(
-											<a href={`http${arr[1]}`}>{arr[0]}</a>
+											<a target="_blank" href={`http${arr[1]}`}>{arr[0]}</a>
 										))}
 									</p>
 								</dd>
@@ -93,12 +74,3 @@ class MovieArticle extends React.Component{
 		)
 	}
 }
-
-const mapStateToProps = (state)=>({
-	bookList:state.books.bookList,
-})
-
-export default connect(
-	mapStateToProps,
-	{getBooks}
-)(MovieArticle)
