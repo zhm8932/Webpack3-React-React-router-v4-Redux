@@ -110,13 +110,14 @@ module.exports = {
 				}]
 			},
 			{
-				test: /\.bundle\.js$/, // 通过文件名后缀自动处理需要转成bundle的文件
-				include: /src/,
+				// test: /\.bundle\.js$/, // 通过文件名后缀自动处理需要转成bundle的文件
+				test: /\.js$/, // 通过文件名后缀自动处理需要转成bundle的文件
+				include: /containers/,
 				exclude: /node_modules/,
 				use: [{
 					loader: 'bundle-loader',
 					options: {
-						name: '[name]',
+						name: '[name].bundle',
 						lazy: true
 					}
 				}, {

@@ -11,7 +11,8 @@ import thunk from 'redux-thunk';
 import reducer from './reducers'
 import callApi from './middleware/callApi'
 
-import MainContainer from './containers/MainContainer'
+// import MainContainer from './containers/MainContainer'
+import Routes from './routes'
 
 import * as utils from './libs/utils';
 
@@ -37,7 +38,7 @@ import 'sass/globals.scss';
 // store.dispatch(getAllProducts())
 ReactDOM.render(
 	<Provider store={store}>
-		<MainContainer/>
+		<Routes/>
 	</Provider>,
 	document.getElementById('app')
 )

@@ -8,7 +8,7 @@ import ReplyList from '../components/cnode/ReplyList';
 
 import Dialog from '../components/Dialog';
 import Msg from '../components/Msg';
-
+import '../../sass/news.scss'
 class CnodeDetail extends React.Component{
 	componentDidMount(){
 		console.log("id:",this.props.match.params.id,"this.props--CnodeDetail:",this.props)

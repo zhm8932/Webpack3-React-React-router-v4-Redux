@@ -7,7 +7,7 @@ import fetchs,{CALL_API} from '../libs/utils/fetch';
 import {getCnodeList,getCnodeListMore,getDataStart} from '../actions'
 
 import {getScrollTop,getWindowHeight,getScrollHeight} from '../libs/utils/getSize';
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
 const articleTypeList={
 	'all': '全部',
 	'good': '精华',
@@ -119,7 +119,7 @@ class CnodeList extends React.Component{
 		props.ref = node => { this.selfComponent = node }
 		return(
 			<div className="wrapper list-wrapper" ref='listBox' >
-				<NavBar articleType={cnodeList.articleType} articleTypeList={articleTypeList}/>
+				<NavBar getDataStart={props.getDataStart} getCnodeList={props.getCnodeList} articleType={cnodeList.articleType} articleTypeList={articleTypeList}/>
 				<div className="lists">
 					<ul>
 						{data.map(item=>
@@ -148,5 +148,5 @@ const mapStateToProps = (state)=>{
 }
 export default connect(
 	mapStateToProps,
-	{getCnodeList,getCnodeListMore,getDataStart}
+	{getCnodeList,getCnodeListMore,getDataStart,}
 )(CnodeList)

@@ -10,9 +10,9 @@ const PORT = process.env.PORT||'4010'
 const publicPath = `/`;
 
 module.exports = {
-	ROOT,
-	SRC_PATH,
-	PUBLIC_PATH,
+	ROOT,           //根目录
+	SRC_PATH,       //前端代码
+	PUBLIC_PATH,    //静态资源
 	publicPath,
-	PORT
+	PORT            //端口
 }

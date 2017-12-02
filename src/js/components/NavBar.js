@@ -4,28 +4,36 @@
 
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {getCnodeList} from '../actions'
 class NavBar extends React.Component{
+	changeArticleType(tab){
+		console.log("修改分类:",tab)
+		this.props.getDataStart();
+		this.props.getCnodeList({tab,page:1,limit:10});
+	}
 	render(){
-		let {articleType,changeArticleType,articleTypeList} = this.props;
-		var res = [];
+		console.log("111111111:",this.props)
+		let {articleType,changeArticleType,articleTypeList,getDataStart} = this.props;
+		var nav = [];
 		for(let key in articleTypeList){
-			res.push(<a className={key==articleType?"active":''} key={key} onClick={(e)=>changeArticleType(key,e)}>{articleTypeList[key]}</a>)
+			nav.push(<a className={key==articleType?"active":''} key={key} onClick={(e)=>this.changeArticleType(key,e)}>{articleTypeList[key]}</a>)
 		}
 		return (
 			<div className="nav-tab">
-				{res}
+				{nav}
 			</div>
 		)
 	}
 }
 
-const mapDispatchToProps=(dispatch,ownProps)=>({
-	changeArticleType:(tab)=>{
-		console.log("修改分类:",tab)
-		dispatch(getCnodeList({tab,page:1,limit:10}))
-	}
-})
-export default connect(
-	null,mapDispatchToProps
-)(NavBar)
+// const mapDispatchToProps=(dispatch,ownProps)=>({
+// 	changeArticleType:(tab)=>{
+// 		console.log("修改分类:",tab)
+// 		// this.scrollTop = 0;
+// 		dispatch(getCnodeList({tab,page:1,limit:10}))
+// 	}
+// })
+// export default connect(
+// 	null,mapDispatchToProps
+// )(NavBar)
+
+export default NavBar
