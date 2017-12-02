@@ -30,8 +30,13 @@ router.get('/test', function(req, res, next) {
 	res.render('test', { title: '测试页面' });
 });
 
-router.get('/report-violation', function(req, res, next) {
-	res.render('test', { title: '测试页面' });
+router.post('/report-violation', function(req, res, next) {
+	if (req.body) {
+		console.log('CSP Violation: ', req.body)
+	} else {
+		console.log('CSP Violation: No data received!')
+	}
+	res.status(204).end()
 });
 
 router.get('/(*)?',Handlers.index);

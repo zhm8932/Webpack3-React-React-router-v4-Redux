@@ -54,6 +54,7 @@ module.exports = {
 		alias:{
 			libs:path.join(SRC_PATH,'js/libs'),
 			sass:path.join(SRC_PATH,'sass'),
+			tools:path.join(ROOT,'utils','tools'), //前后端公共JS
 			views:path.join(ROOT,'views'),
 			// images:path.join(SRC_PATH,'images'),
 			slides:'libs/jquery.slides.js',

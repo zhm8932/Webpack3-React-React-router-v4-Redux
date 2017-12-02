@@ -13,6 +13,10 @@ import callApi from './middleware/callApi'
 
 import MainContainer from './containers/MainContainer'
 
+import * as utils from './libs/utils';
+
+console.log("utils:",utils)
+console.log("htmlEncode:",utils.htmlEncode)
 import {getAllProducts} from './actions';
 
 // const middleware = [thunk];

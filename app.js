@@ -87,7 +87,7 @@ var csp = require('helmet-csp');
 
 const images = [
 	`https:`,
-	`data:`
+	`gravatar.com`
 ]
 
 app.use(csp({
@@ -95,9 +95,9 @@ app.use(csp({
 		defaultSrc: ["'self'"],
 		scriptSrc: ["'self'","'unsafe-inline'"],
 		styleSrc: ["'self'","'unsafe-inline'"],
-		imgSrc: ["'self'",'apis.juhe.cn','juhe.cn','img1.doubanio.com','img3.doubanio.com','doubanio.com','data:',...images],
+		imgSrc: ["'self'",'apis.juhe.cn','*.doubanio.com','data:','*.gravatar.com',...images],
 		fontSrc: ["'self'",'data:'],
-		connectSrc: ["'self'",'cnodejs.org'],
+		connectSrc: ["'self'",'cnodejs.org','ws://localhost:4010'],
 		// sandbox: ['allow-forms', 'allow-scripts'],
 		reportUri: '/report-violation',
 		objectSrc: ["'none'"],

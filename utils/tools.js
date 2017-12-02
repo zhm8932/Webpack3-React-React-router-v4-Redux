@@ -51,6 +51,9 @@ exports.handlerError = function (error) {
 }
 
 exports.formatDate = function(value, format) {
+	if(!value){
+		return false
+	}
 	var t = new Date(value);
 	var tf = function (i) {
 		return (i < 10 ? '0' : '') + i
@@ -81,5 +84,9 @@ exports.formatDate = function(value, format) {
 
 //html字符转义过滤函数
 exports.htmlEncode = function(str) {
-	return str.replace(/&/g,"&amp;").replace(/\"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/ /g,"&nbsp;");
+	if(typeof str ==="string"&&str!==""){
+		return str.replace(/&/g,"&amp;").replace(/\"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/ /g,"&nbsp;");
+	}else{
+		return str
+	}
 }

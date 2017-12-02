@@ -43,21 +43,6 @@ module.exports = merge(webpackConfig,{
 	],
 	devServer:{
 		proxy:{
-			// '/douban/*':{
-			// 	target: "https://api.douban.com/v2",
-			// 	secure: false,
-			// 	pathRewrite: {"^/douban/" : "/"}
-			// },
-			// '/apis':{
-			// 	target:'https://api.douban.com',
-			// 	// target: 'http://jsonplaceholder.typicode.com',
-			// 	pathRewrite: {
-			// 		'^/apis': ''   //需要rewrite重写的,
-			// 	},
-			// 	secure: false,
-			// 	changeOrigin: true, //是否跨域
-			// 	logLevel:'debug'
-			// },
 			'*':'http://localhost:3010',
 		},
 		contentBase: [PUBLIC_PATH],        //默认webpack-dev-server会为根文件夹提供本地服务器，如果想为另外一个目录下的文件提供本地服务器，应该在这里设置其所在目录，告诉服务器从哪里提供内容

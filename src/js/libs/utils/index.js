@@ -7,38 +7,10 @@ String.prototype.trim = function () {
 //jquery 插件
 import './jqPlugins';
 
-export function formatDate(value, format) {
-	if(!value){
-		return false
-	}
-    var t = new Date(value);
-    var tf = function (i) {
-        return (i < 10 ? '0' : '') + i
-    };
-    return format.replace(/YYYY|MM|DD|hh|mm|ss/g, function (a) {
-        switch (a) {
-            case 'YYYY':
-                return tf(t.getFullYear());
-                break;
-            case 'MM':
-                return tf(t.getMonth() + 1);
-                break;
-            case 'DD':
-                return tf(t.getDate());
-                break;
-            case 'hh':
-                return tf(t.getHours());
-                break;
-            case 'mm':
-                return tf(t.getMinutes());
-                break;
-            case 'ss':
-                return tf(t.getSeconds());
-                break;
-        }
-    });
-}
-
+import tools from 'tools'
+export const formatDate = tools.formatDate;
+export const htmlEncode = tools.htmlEncode;
+console.log("tools:",tools)
 export function formatPassDate(str){
 
 	var date = new Date(str);
@@ -84,7 +56,7 @@ export function parseQueryString(str) {
     search&&search.forEach(function (item,index) {
         let arr = item.split('=');
         // console.log("item:",item)
-        obj[arr[0]]= decodeURI(arr[1])
+        obj[arr[0]]= htmlEncode(decodeURI(arr[1]))
     })
     // console.log("obj:",obj)
     return obj;

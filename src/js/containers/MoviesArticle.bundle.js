@@ -78,9 +78,6 @@ class MovieArticle extends React.Component{
 						<p><label>又名:</label>{moveArticle.aka.join('/')}</p>
 					</dd>
 				</dl>
-				<div className="rating">
-					<h3></h3>
-				</div>
 				<div className="clearfix"></div>
 				<div className="summary clearfix">
 					<h3>{moveArticle.title}的剧情简介· · · · · ·</h3>
