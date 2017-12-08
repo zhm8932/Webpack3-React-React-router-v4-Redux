@@ -2,11 +2,17 @@
  * Created by haiming.zeng on 2017/10/27.
  */
 import {connect} from 'react-redux';
-
+import fetchs from '../libs/utils/fetch';
+import * as utils from '../libs/utils';
 
 const Index = ()=>(
 	<div className="wrapper">
 		<p>首页</p>
+		<div>
+			随着 Node.js v8 的发布，Node.js 已原生支持 async/await 函数，Web 框架 Koa 也随之发布了 Koa 2 正式版，支持 async/await 中间件，为处理异步回调带来了极大的方便。
+
+			既然 Koa 2 已经支持 async/await 中间件了，为什么不直接用 Koa，而还要去改造 Express 让其支持 async/await 中间件呢？因为 Koa 2 正式版发布才不久，而很多老项目用的都还是 Express，不可能将其推倒用 Koa 重写，这样成本太高，但又想用到新语法带来的便利，那就只能对 Express 进行改造了，而且这种改造必须是对业务无侵入的，不然会带来很多的麻烦。
+		</div>
 	</div>
 )
 
@@ -69,5 +75,23 @@ function test() {
 	let obj3 = ''
 }
 
-test()
+// test()
+
+async function getTopic(data) {
+	console.log("data：",data)
+	let result = await fetchs({url:'https://cnodejs.org/api/v1/topics',data})
+	console.log("result:",result,utils)
+	if(result.code==200){
+
+	}else{
+		console.log("result.message:",result.message)
+		utils.msg({title:result.message,delayTime:5000})
+	}
+
+}
+getTopic({
+	page:1,
+	limits:20,
+	tab:'all'
+})
 export default Index

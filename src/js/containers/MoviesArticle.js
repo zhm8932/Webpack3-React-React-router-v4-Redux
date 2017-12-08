@@ -9,7 +9,15 @@ import SimpleSlider from '../components/SimpleSlider'
 import appKey from '../libs/utils/appKey';
 
 console.log("appKey:",appKey)
+const mapStateToProps = (state)=>({
+	moveArticle:state.movies.moveArticle,
+	bookCat:state.books.bookCat,
+})
 
+@connect(
+	mapStateToProps,
+	{getMovieArticle,getBooksCat}
+)
 class MovieArticle extends React.Component{
 	componentDidMount(){
 
@@ -99,12 +107,10 @@ class MovieArticle extends React.Component{
 	}
 }
 
-const mapStateToProps = (state)=>({
-	moveArticle:state.movies.moveArticle,
-	bookCat:state.books.bookCat,
-})
 
-export default connect(
-	mapStateToProps,
-	{getMovieArticle,getBooksCat}
-)(MovieArticle)
+
+export default MovieArticle
+// export default connect(
+// 	mapStateToProps,
+// 	{getMovieArticle,getBooksCat}
+// )(MovieArticle)

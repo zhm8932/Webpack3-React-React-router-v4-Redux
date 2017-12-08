@@ -34,7 +34,7 @@ module.exports = merge(webpackConfig,{
 		}),
 		// 若要按需加载 CSS 则请注释掉该行
 		new ExtractTextPlugin('css/[name].css',{
-			allChunks : true
+			// allChunks : true
 		}),
 		// new webpack.NoErrorsPlugin(),	//不显示错误插件
 		new webpack.optimize.UglifyJsPlugin({

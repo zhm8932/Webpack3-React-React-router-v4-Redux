@@ -10,6 +10,7 @@ import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducers'
 import callApi from './middleware/callApi'
+import 'babel-polyfill';
 
 // import MainContainer from './containers/MainContainer'
 import Routes from './routes'

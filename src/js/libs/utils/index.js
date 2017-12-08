@@ -232,6 +232,14 @@ export function lazyload({ele='.list',rate=1}={}) {
 	});
 }
 
+export function isArray(arr) {
+	return Object.prototype.toString.call(arr) === "[object Array]";
+	// return typeof arr=='object'&&arr.constructor ==Array;
+}
+//是否对象
+export function isObject(arr) {
+	return Object.prototype.toString.call(arr) ==="[object Object]";
+}
 //常用方法
 export const dialog = require('./dialog');
 export const msg = require('./msg');

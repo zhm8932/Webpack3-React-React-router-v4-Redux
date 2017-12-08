@@ -8,7 +8,7 @@ const NewsDetail = ({match,count})=>{
 	let detail = count[id]||{};
 	console.log("detail:",detail)
 	return(
-		<section className="wrapper article">
+		<section className="wrapper article-news">
 			<header>
 				<h1>{detail.name}</h1>
 				<p>发布日期：
