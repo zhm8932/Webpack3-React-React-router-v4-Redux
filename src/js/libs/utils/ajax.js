@@ -7,9 +7,7 @@ const ajax = function ({url, method = 'GET', data, done, error, beforeSend}) {
 			method: method,
 			url: url,
 			beforeSend: function () {
-				if (beforeSend) {
-					beforeSend()
-				}
+				beforeSend&&beforeSend();
 			},
 			data: data
 		}).done(function (json) {
@@ -17,20 +15,18 @@ const ajax = function ({url, method = 'GET', data, done, error, beforeSend}) {
 			if (json.code == '40080003' || json.code == '40080005') {
 				//缓存返回的跳转地址
 				sessionStorage.setItem('bu', window.location.href); //返回跳转地址
-				return window.location = '/cus/login'
+				return window.location = '/cus/login';
 			}
-			if (done) {
-				done(json)
-			}
-			resolve(json)
+			done&&done(json);
+			resolve(json);
 		}).fail(function (err) {
-			console.log("err:", err)
+			console.log("err:", err);
 			if (error) {
-				error(err)
+				error(err);
 			}
-			reject(err)
-		})
-	})
+			reject(err);
+		});
+	});
 
 };
 

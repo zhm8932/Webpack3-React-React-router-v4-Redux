@@ -1,6 +1,6 @@
 import Tloader from 'react-touch-loader';
-import '../../sass/contact.scss'
-import {getWindowHeight} from '../libs/utils/getSize'
+import '../../sass/contact.scss';
+import {getWindowHeight} from '../libs/utils/getSize';
 class Contact extends React.Component {
 	constructor() {
 		super();
@@ -10,7 +10,7 @@ class Contact extends React.Component {
 			hasMore: 0,
 			initializing: 1,
 			refreshedAt: Date.now()
-		}
+		};
 	}
 
 	refresh(resolve, reject) {
@@ -88,4 +88,4 @@ class Contact extends React.Component {
 	}
 }
 
-export default Contact
+export default Contact;

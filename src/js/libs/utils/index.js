@@ -116,7 +116,7 @@ export function isChinese(obj) {
 //验证是否为2-20个汉字姓名
 export function isChineseName(obj) {
 	if ((/^[\u4E00-\u9FA5]{2,20}$/).test(obj)) {
-		return true
+		return true;
 	}
 	return false;
 }
@@ -161,7 +161,7 @@ export function initImgSize({ele = ".list", rate}) {
 	let viewHeight;
 	if (!$img.length) {
 		console.log("未找到图片");
-		return false
+		return false;
 	}
 	//获取高度
 	function getViewHeight(originRate) {

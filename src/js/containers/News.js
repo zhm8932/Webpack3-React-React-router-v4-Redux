@@ -1,17 +1,17 @@
 /**
  * Created by haiming.zeng on 2017/10/27.
  */
-import '../../sass/news.scss'
+import '../../sass/news.scss';
 
-import { getVisibleProducts,getProduct} from '../reducers/count'
-import {connect} from 'react-redux'
+import { getVisibleProducts,getProduct} from '../reducers/count';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import {getAllProducts,getUser} from '../actions';
 class NewsList extends React.Component{
 	componentDidMount(){
-		console.log("count11333:",this.props)
-		this.props.getAllProducts()
+		console.log("count11333:",this.props);
+		this.props.getAllProducts();
 		// this.props.getUser()
 	}
 	render(){
@@ -37,14 +37,14 @@ class NewsList extends React.Component{
 					</div>
 				</section>
 			</div>
-		)
+		);
 	}
 }
 
 const mapStateToProps = state=>({
 	count:getVisibleProducts(state.count)
-})
+});
 export default connect(
 	mapStateToProps,
 	{getAllProducts,getUser}
-)(NewsList)
+)(NewsList);

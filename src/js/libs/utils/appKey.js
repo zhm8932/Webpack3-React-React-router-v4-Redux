@@ -4,4 +4,4 @@
 
 export default {
 	book: '71d7c958ddaade37861387ee208f2f67'
-}
+};

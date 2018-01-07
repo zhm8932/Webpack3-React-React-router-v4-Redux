@@ -1,12 +1,12 @@
 /**
  * Created by haiming.zeng on 2017/10/27.
  */
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 const NewsDetail = ({match,count})=>{
 	let {id} = match.params;
-	console.log("id22ssss:",id,"count:",count)
+	console.log("id22ssss:",id,"count:",count);
 	let detail = count[id]||{};
-	console.log("detail:",detail)
+	console.log("detail:",detail);
 	return(
 		<section className="wrapper article">
 			<header>
@@ -28,10 +28,10 @@ const NewsDetail = ({match,count})=>{
 				</p>
 			</div>
 		</section>
-	)
-}
+	);
+};
 
 const mapStateToProps = state =>({
 	count: state.count.byId
-})
-export default connect(mapStateToProps)(NewsDetail)
+});
+export default connect(mapStateToProps)(NewsDetail);

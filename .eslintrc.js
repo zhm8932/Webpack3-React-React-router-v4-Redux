@@ -35,9 +35,8 @@ module.exports = {
 		// 	"single"
 		// ],
 		"semi": [  //禁止多余的冒号
-			"off",
-			"always",
-			// {"omitLastInOneLineBlock": true}
+			"warn",
+			"always"
 		],
 		"react/prop-types": 0,
 		"react/no-unescaped-entities": 0,
@@ -50,6 +49,7 @@ module.exports = {
 		"no-caller": "error",//不允许用callee等，es6严格模式不支持
 		"no-unmodified-loop-condition": "error",
 		"no-with": "error",//不允许用with来声明
+		"no-extra-semi": "error",//禁止不必要的分号
 	},
 	"globals": {  //使用的全局变量
 		"window": true,

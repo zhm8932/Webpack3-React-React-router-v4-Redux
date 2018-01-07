@@ -14,4 +14,4 @@ const dialog = (state=false,action)=>{
 	}
 };
 
-export default combineReducers({show:dialog})
+export default combineReducers({show:dialog});

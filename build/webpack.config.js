@@ -75,7 +75,6 @@ module.exports = {
 				  "babel-loader",
 				  // "eslint-loader",
 				],
-				// use:'babel-loader',
 				include: /src/,
 				exclude:/node_modules/
 			},

@@ -14,9 +14,9 @@ const msg = (state={show:false,content:''},action)=>{
 				show:false
 			};
 		default:
-			return state
+			return state;
 
 	}
-}
+};
 
-export default msg
+export default msg;

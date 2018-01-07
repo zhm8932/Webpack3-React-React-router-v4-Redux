@@ -2,7 +2,7 @@
  * Created by haiming.zeng on 2017/10/31.
  */
 
-import {formatDate, formatPassDate} from '../libs/utils'
+import {formatDate, formatPassDate} from '../libs/utils';
 import {Link} from 'react-router-dom';
 class UserDetail extends React.Component {
 	componentDidMount() {
@@ -12,21 +12,21 @@ class UserDetail extends React.Component {
 
 	shouldComponentUpdate(nextProps, nextState) {
 		//如果是刷新页面时就在此页面，加载一次数据
-		console.log("nextProps:", nextProps, "nextState:", nextState)
-		return this.props.userDetail.isFetching && !nextProps.isFetching
+		console.log("nextProps:", nextProps, "nextState:", nextState);
+		return this.props.userDetail.isFetching && !nextProps.isFetching;
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log("this-Props:", nextProps.match.params.id, this.props.match.params.id)
+		console.log("this-Props:", nextProps.match.params.id, this.props.match.params.id);
 		if (nextProps.match.params.id !== this.props.match.params.id) {
-			console.log("99999999999")
+			console.log("99999999999");
 			this.props.getUserDetail();
 			this.props.getTopicCollect();
 		}
 	}
 
 	render() {
-		console.log("this.props333333333:", this.props)
+		console.log("this.props333333333:", this.props);
 		let {json, isFetching} = this.props.userDetail;
 		let {topicCollect, userDetail} = this.props;
 		// console.log("topicCollect:",topicCollect)
@@ -34,13 +34,13 @@ class UserDetail extends React.Component {
 		if (isFetching) {
 			return (
 				<div>数据请求中……</div>
-			)
+			);
 		}
-		console.log("jsonjson:", json.success, json)
+		console.log("jsonjson:", json.success, json);
 		if (!json.success) {
 			return (
 				<div></div>
-			)
+			);
 		}
 		let {data} = json;
 		return (
@@ -83,8 +83,8 @@ class UserDetail extends React.Component {
 					</ul>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
-export default UserDetail
+export default UserDetail;

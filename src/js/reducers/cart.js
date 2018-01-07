@@ -1,36 +1,36 @@
 /**
  * Created by Administrator on 2017/5/15.
  */
-import {ADD_PRODUCT, DEL_PRODUCT, DEL_COUNT, CLEAR_PRODUCT} from '../constants/ActionTypes'
+import {ADD_PRODUCT, DEL_PRODUCT, DEL_COUNT, CLEAR_PRODUCT} from '../constants/ActionTypes';
 
 const initialState = {
 	addedIds: [],
 	quantityById: {}
-}
+};
 
 const addIds = (state = initialState.addedIds, action) => {
 	switch (action.type) {
 		case ADD_PRODUCT:
 			if (state.indexOf(action.productId) !== -1) {
-				return state
+				return state;
 			}
 			return [
 				...state,
 				action.productId
-			]
+			];
 		case DEL_PRODUCT:
-			var id = state.indexOf(action.productId)
-			state.splice(id, 1)
-			return state
+			var id = state.indexOf(action.productId);
+			state.splice(id, 1);
+			return state;
 		case CLEAR_PRODUCT:
-			state = []
-			return state
+			state = [];
+			return state;
 		default:
-			return state
+			return state;
 
 
 	}
-}
+};
 const quantityId = (state = initialState.quantityById, action) => {
 	let {productId} = action;
 	switch (action.type) {
@@ -42,22 +42,22 @@ const quantityId = (state = initialState.quantityById, action) => {
 		case DEL_COUNT:
 
 			if (state[productId] === 1) {
-				delete state[productId]
+				delete state[productId];
 				return {
 					...state
-				}
+				};
 			}
 			return {
 				...state,
 				[productId]: state[productId] - 1
-			}
+			};
 		case CLEAR_PRODUCT:
-			state = {}
-			return state
+			state = {};
+			return state;
 		default:
-			return state
+			return state;
 	}
-}
+};
 
 
 const cart = (state = initialState, action) => {
@@ -66,7 +66,7 @@ const cart = (state = initialState, action) => {
 			return {
 				addIds: addIds(state.addIds, action),
 				quantityId: quantityId(state.quantityId, action)
-			}
+			};
 	}
-}
-export default cart
+};
+export default cart;

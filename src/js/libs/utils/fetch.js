@@ -23,6 +23,6 @@ const fetchs = ({url, method = 'GET', mode = '', data = {}}) => {
 		},
 		body:JSON.stringify(data)
 	}).then(response => response.json());
-}
+};
 
 export default fetchs;

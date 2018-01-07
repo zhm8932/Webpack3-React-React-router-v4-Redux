@@ -18,4 +18,4 @@ export default combineReducers({
 	msg,
 	movies,
 	books
-})
+});

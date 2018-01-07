@@ -2,9 +2,9 @@
  * Created by 91608 on 2017/11/4.
  */
 
-import React, {Component, PropTypes} from 'react'
+import React, {Component, PropTypes} from 'react';
 // import 'dialog.css';//引入样式文件 此处省略CSS Mouldes 或者 style in js的css模块化方案讨论
-import '../../sass/includes/dialog.scss'
+import '../../sass/includes/dialog.scss';
 export default class Dialog extends Component {
 
 	componentDidMount() {
@@ -12,11 +12,11 @@ export default class Dialog extends Component {
 		//给window全局绑定 resize和 keyup
 		window.addEventListener('resize', this.handleResize);
 		window.addEventListener('keyup', this.handleKeyUp);
-		setTimeout(() => this.props.handleMsgCancle(), 5000)
+		setTimeout(() => this.props.handleMsgCancle(), 5000);
 	}
 
 	componentDidUpdate() {
-		console.log("componentDidUpdate")
+		console.log("componentDidUpdate");
 		this.positionDialog();
 
 	}
@@ -35,7 +35,7 @@ export default class Dialog extends Component {
 		if (!buttonClicked && this.props.modal) {
 			return; //如果不是按钮触发close同时dialog是模态框，就return
 		}
-		this.props.onRequestClose && this.props.onRequestClose(buttonClicked)
+		this.props.onRequestClose && this.props.onRequestClose(buttonClicked);
 	}
 
 	handleClickOverlay = () => { //箭头函数避免this错误
@@ -58,7 +58,7 @@ export default class Dialog extends Component {
 
 	render() {
 		const {title, children, actions, open, modal} = this.props;
-		console.log("this.props-MSG:", this.props)
+		console.log("this.props-MSG:", this.props);
 		return (
 			<div className="msg-container">
 				{open &&
@@ -82,6 +82,6 @@ export default class Dialog extends Component {
 				></div>
 				}
 			</div>
-		)
+		);
 	}
 }

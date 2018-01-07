@@ -1,26 +1,26 @@
 /**
  * Created by haiming.zeng on 2017/10/27.
  */
-import {connect} from 'react-redux'
-import {getCnodeDetail, handleShow} from '../actions'
-import {formatDate} from '../libs/utils'
+import {connect} from 'react-redux';
+import {getCnodeDetail, handleShow} from '../actions';
+import {formatDate} from '../libs/utils';
 import ReplyList from '../components/cnode/ReplyList';
 
 import Dialog from '../components/Dialog';
 import Msg from '../components/Msg';
-import '../../sass/news.scss'
+import '../../sass/news.scss';
 class CnodeDetail extends React.Component {
 	componentDidMount() {
-		console.log("id:", this.props.match.params.id, "this.props--CnodeDetail:", this.props)
+		console.log("id:", this.props.match.params.id, "this.props--CnodeDetail:", this.props);
 		// this.props.getCnodeDetail(this.props.match.params.id)
-		window.scrollTo(0, 0)
-		this.props.getCnodeDetail()
+		window.scrollTo(0, 0);
+		this.props.getCnodeDetail();
 	}
 
 	render() {
-		console.log("this.props:", this.props)
+		console.log("this.props:", this.props);
 		let {cnodeDetail, dialog, msg} = this.props;
-		console.log("cnodeDetail:", cnodeDetail)
+		console.log("cnodeDetail:", cnodeDetail);
 		return (
 			<section className="wrapper article">
 				<header>
@@ -61,7 +61,7 @@ class CnodeDetail extends React.Component {
 					{this.props.msg.content}
 				</Msg>
 			</section>
-		)
+		);
 	}
 }
 
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => ({
 	cnodeDetail: state.cnode.cnodeDetail,
 	dialog: state.dialog,
 	msg: state.msg
-})
+});
 
 // const mapDispatchToProps = (dispatch,ownProps)=>{
 // 	console.log("ownProps:",ownProps)
@@ -85,18 +85,18 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 	handleCollect: () => dispatch(handleShow('DIALOG_SHOW')),
 	onRequestClose: () => dispatch(handleShow('DIALOG_HIDE')),
 	handleCancle: () => {
-		console.log("取消")
-		dispatch(handleShow('HIDE'))
+		console.log("取消");
+		dispatch(handleShow('HIDE'));
 	},
 	handleMsgCancle: () => dispatch(handleShow('MSG_HIDE')),
 	handleSubmit: () => {
-		console.log("handleSubmit")
-		return dispatch(handleShow('MSG_SHOW', '收藏成功！'))
+		console.log("handleSubmit");
+		return dispatch(handleShow('MSG_SHOW', '收藏成功！'));
 	}
 
-})
+});
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(CnodeDetail)
+)(CnodeDetail);

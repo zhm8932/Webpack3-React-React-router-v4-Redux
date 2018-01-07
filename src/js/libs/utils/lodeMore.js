@@ -70,8 +70,8 @@ const LodeMore = function (options) {
 			return false;
 		}
 
-	})
-}
+	});
+};
 
 LodeMore.prototype = {
 	initLoadMore(){
