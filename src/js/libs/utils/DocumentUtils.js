@@ -1,37 +1,36 @@
-
 'use strict';
 import Animation from './Animation';
 
-var addEvent = (function(window, undefined) {
+var addEvent = (function (window, undefined) {
 	if (window.addEventListener) {
-		return function(el, type, fn, capture) {
+		return function (el, type, fn, capture) {
 			if (type === "mousewheel" && document.mozHidden !== undefined) {
 				type = "DOMMouseScroll";
 			}
 			el.addEventListener(type, fn, capture || false);
 		}
 	} else if (window.attachEvent) {
-		return function(el, type, fn, capture) {
+		return function (el, type, fn, capture) {
 			el.attachEvent("on" + type, fn);
 		}
-	}else{
+	} else {
 		console.error("addEvent 浏览器版本不支持")
 	}
 })(window);
 
-var removeEvent = (function(window, undefined) {
+var removeEvent = (function (window, undefined) {
 	if (window.removeEventListener) {
-		return function(el, type, fn, capture) {
+		return function (el, type, fn, capture) {
 			if (type === "mousewheel" && document.mozHidden !== undefined) {
 				type = "DOMMouseScroll";
 			}
 			el.removeEventListener(type, fn, capture || false);
 		}
 	} else if (window.detachEvent) {
-		return function(el, type, fn, capture) {
+		return function (el, type, fn, capture) {
 			el.detachEvent("on" + type, fn);
 		}
-	}else{
+	} else {
 		console.error("addEvent 浏览器版本不支持")
 	}
 })(window);
@@ -39,7 +38,7 @@ const DocumentUtils = {
 
 	addEvent: addEvent,
 	removeEvent: removeEvent,
-	getOffset: function(obj) {
+	getOffset: function (obj) {
 		var x = 0;
 		var y = 0;
 		while (obj) {
@@ -53,7 +52,7 @@ const DocumentUtils = {
 		};
 	},
 	//滚动条在Y轴上的滚动距离
-	getScrollTop: function() {
+	getScrollTop: function () {
 		var scrollTop = 0,
 			bodyScrollTop = 0,
 			documentScrollTop = 0;
@@ -67,7 +66,7 @@ const DocumentUtils = {
 		return scrollTop;
 	},
 	//文档的总高度
-	getScrollHeight: function() {
+	getScrollHeight: function () {
 		var scrollHeight = 0,
 			bodyScrollHeight = 0,
 			documentScrollHeight = 0;
@@ -81,7 +80,7 @@ const DocumentUtils = {
 		return scrollHeight;
 	},
 	//浏览器视口的高度
-	getWindowHeight: function() {
+	getWindowHeight: function () {
 		var windowHeight = 0;
 		if (document.compatMode == "CSS1Compat") {
 			windowHeight = document.documentElement.clientHeight;
@@ -91,7 +90,7 @@ const DocumentUtils = {
 		return windowHeight;
 	},
 	//浏览器视口的宽度
-	getWindowWidth: function() {
+	getWindowWidth: function () {
 		var windowWidth = 0;
 		if (document.compatMode == "CSS1Compat") {
 			windowWidth = document.documentElement.clientWidth;
@@ -101,26 +100,26 @@ const DocumentUtils = {
 		return windowWidth;
 	},
 	//滚到到指定位置
-	scrollTo: function(position, duration) {
+	scrollTo: function (position, duration) {
 		if (position === 0 || position) {
 			duration = duration || 300;
 			document.documentElement.scrollTop++;
 			document.body.scrollTop++;
-			var dom ;
-			if(document.documentElement.scrollTop){
+			var dom;
+			if (document.documentElement.scrollTop) {
 				dom = document.documentElement;
-			}else if(document.body.scrollTop){
+			} else if (document.body.scrollTop) {
 				dom = document.body;
 			}
-			try{
+			try {
 
 				var am = new Animation(dom);
 				console.log(position)
 				am.go({
 					scrollTop: position
-				}, duration,Animation.TWEEN.Back.easeOut).start();
-			}catch(e){
-				console.error(e.name,e.message);
+				}, duration, Animation.TWEEN.Back.easeOut).start();
+			} catch (e) {
+				console.error(e.name, e.message);
 				dom.scrollTop = position;
 			}
 		}

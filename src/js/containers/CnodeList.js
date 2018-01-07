@@ -143,10 +143,10 @@ class CnodeList extends React.Component{
 
 const mapStateToProps = (state)=>{
 	return {
-		cnodeList:state.cnode.cnodeList,
+		cnodeList:state.cnode.cnodeList
 	}
 }
 export default connect(
 	mapStateToProps,
-	{getCnodeList,getCnodeListMore,getDataStart,}
+	{getCnodeList,getCnodeListMore,getDataStart}
 )(CnodeList)

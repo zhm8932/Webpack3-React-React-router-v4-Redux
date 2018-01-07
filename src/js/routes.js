@@ -12,27 +12,24 @@ import {
 	Link,
 	NavLink
 } from 'react-router-dom';
-import Index from './containers/Index'
-import About from './containers/About'
-import News from './containers/News'
-import NewsDetail from './containers/NewsDetail'
-import CnodeList from './containers/CnodeList'
-import CnodeDetail from './containers/CnodeDetail'
+import Index from './containers/Index';
+import About from './containers/About';
+import News from './containers/News';
+import NewsDetail from './containers/NewsDetail';
+import CnodeList from './containers/CnodeList';
+import CnodeDetail from './containers/CnodeDetail';
 // import CnodeDetail from './CnodeDetail'
-import UserContainer from './containers/UserContainer'
-import ContactContainer from './containers/ContactContainer'
-import Movies from './containers/Movies'
-import MoviesArticle from './containers/MoviesArticle'
-import MoviesBook from './containers/MoviesBook'
+import UserContainer from './containers/UserContainer';
+import ContactContainer from './containers/ContactContainer';
+import Movies from './containers/Movies';
+import MoviesArticle from './containers/MoviesArticle';
+import MoviesBook from './containers/MoviesBook';
 
 const lazyLoadComponent = (comp) => (props) => (
 	<Bundle load={comp}>
 		{(Container) => <Container {...props}/>}
 	</Bundle>
-)
-
-
-import {getCnode} from './actions'
+);
 
 const Routes = ()=>(
 	<Router>
@@ -63,6 +60,6 @@ const Routes = ()=>(
 			<Route path="/movies/book/:id" component={lazyLoadComponent(MoviesBook)}/>
 		</div>
 	</Router>
-)
+);
 
-export default Routes
+export default Routes;

@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 
-export default class Bundle extends React.Component {
+export default class Bundle extends Component {
 
 	state = {
 		// short for "module" but that's a keyword in js, so "mod"

@@ -17,7 +17,7 @@ class MovieArticle extends React.Component{
 		// this.props.getMoviesList();
 		console.log("props::::",this.props,"id111111111:",id);
 		this.props.getMovieArticle({
-			url:`/apis/v2/movie/subject/${id}`,
+			url:`/apis/v2/movie/subject/${id}`
 			// data:{name:'123456'}
 		});
 		this.props.getBooksCat({
@@ -101,7 +101,7 @@ class MovieArticle extends React.Component{
 
 const mapStateToProps = (state)=>({
 	moveArticle:state.movies.moveArticle,
-	bookCat:state.books.bookCat,
+	bookCat:state.books.bookCat
 })
 
 export default connect(

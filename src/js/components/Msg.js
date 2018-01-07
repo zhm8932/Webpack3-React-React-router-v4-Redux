@@ -2,7 +2,7 @@
  * Created by 91608 on 2017/11/4.
  */
 
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react'
 // import 'dialog.css';//引入样式文件 此处省略CSS Mouldes 或者 style in js的css模块化方案讨论
 import '../../sass/includes/dialog.scss'
 export default class Dialog extends Component {
@@ -12,7 +12,7 @@ export default class Dialog extends Component {
 		//给window全局绑定 resize和 keyup
 		window.addEventListener('resize', this.handleResize);
 		window.addEventListener('keyup', this.handleKeyUp);
-		setTimeout(()=>this.props.handleMsgCancle(),5000)
+		setTimeout(() => this.props.handleMsgCancle(), 5000)
 	}
 
 	componentDidUpdate() {
@@ -21,7 +21,7 @@ export default class Dialog extends Component {
 
 	}
 
-	componentDidUnmount(){
+	componentDidUnmount() {
 		window.removeEventListener('resize', this.handleResize);
 		window.removeEventListener('keyup', this.handleKeyUp);
 	}
@@ -32,7 +32,7 @@ export default class Dialog extends Component {
 	}
 
 	requestClose(buttonClicked) { //buttonClicked 标示触发关闭弹窗的是否为按钮
-		if(!buttonClicked && this.props.modal){
+		if (!buttonClicked && this.props.modal) {
 			return; //如果不是按钮触发close同时dialog是模态框，就return
 		}
 		this.props.onRequestClose && this.props.onRequestClose(buttonClicked)
@@ -42,22 +42,23 @@ export default class Dialog extends Component {
 		this.requestClose(false);
 	}
 	handleKeyUp = (event) => {
-		if(!this.props.open){
+		if (!this.props.open) {
 			return;
 		}
-		if(event.keyCode==27){ //esc的keyCode码
+		if (event.keyCode == 27) { //esc的keyCode码
 			this.requestClose(false);
 		}
 	}
 	handleResize = () => {
-		if(!this.props.open){
+		if (!this.props.open) {
 			return;
 		}
 		this.positionDialog();
 	}
-	render(){
-		const {title, children, actions, open ,modal} = this.props;
-		console.log("this.props-MSG:",this.props)
+
+	render() {
+		const {title, children, actions, open, modal} = this.props;
+		console.log("this.props-MSG:", this.props)
 		return (
 			<div className="msg-container">
 				{open &&
@@ -76,9 +77,9 @@ export default class Dialog extends Component {
 				</div>
 				}
 				{open &&
-				<div className={`overlay ${modal?'transparent':''}`}
-					onClick={this.handleClickOverlay}
-					></div>
+				<div className={`overlay ${modal ? 'transparent' : ''}`}
+					 onClick={this.handleClickOverlay}
+				></div>
 				}
 			</div>
 		)

@@ -3,7 +3,7 @@
  */
 
 import Slider from 'react-slick';
-console.log("Slider:",Slider);
+console.log("Slider:", Slider);
 
 import '../../sass/includes/slick.scss'
 import '../../sass/includes/slick-theme.scss'

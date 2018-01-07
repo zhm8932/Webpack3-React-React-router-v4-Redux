@@ -25,6 +25,7 @@ class Contact extends React.Component {
 			resolve();
 		}, 2e3);
 	}
+
 	loadMore(resolve) {
 		setTimeout(() => {
 			var l = this.state.listLen + 9;
@@ -37,29 +38,29 @@ class Contact extends React.Component {
 			resolve();
 		}, 2e3);
 	}
+
 	componentDidMount() {
 		setTimeout(() => {
 			this.setState({
 				listLen: 9,
 				hasMore: 1,
-				initializing: 2, // initialized
-			},function () {
-				var height = getWindowHeight()-160
-				// console.log("getWindowHeight:",height,this.refs['view-box']);
-				// this.refs['view-box'].style.height = height;
+				initializing: 2 // initialized
+			}, function () {
+
 			});
 		}, 2e3);
 	}
-	componentDidUpdate(){
+
+	componentDidUpdate() {
 
 	}
+
 	toggleCanRefresh() {
-		this.setState({ canRefreshResolve: !this.state.canRefreshResolve });
+		this.setState({canRefreshResolve: !this.state.canRefreshResolve});
 	}
 
 	render() {
-		var { listLen, hasMore, initializing, refreshedAt, canRefreshResolve } = this.state;
-		var { refresh, loadMore, toggleCanRefresh } = this;
+		var {listLen, hasMore, initializing, refreshedAt} = this.state;
 		var list = [];
 
 		if (listLen) {
@@ -82,19 +83,8 @@ class Contact extends React.Component {
 						 initializing={initializing}>
 					<ul>{list}</ul>
 				</Tloader>
-
 			</div>
 		);
-
-		// <h2>
-		// 	<a href="https://github.com/Broltes/react-touch-loader">view source</a>
-		// 	<label>
-		// 		can refresh resolve
-		// 		<input type="checkbox"
-		// 		       checked={canRefreshResolve}
-		// 		       onChange={(e) => this.toggleCanRefresh(e)} />
-		// 	</label>
-		// </h2>
 	}
 }
 
