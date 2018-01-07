@@ -15,23 +15,12 @@ module.exports = merge(webpackConfig,{
 				test:/\.scss$/,
 				use:['css-hot-loader'].concat(ExtractTextPlugin.extract({  //开发环境分离css时，热更新无效
 					fallback:'style-loader',
-					use: [{
-						loader: "css-loader",
-					}, {
-						loader: "sass-loader"
-					}],
+					use: [
+						{loader: "css-loader",},
+						{loader: "sass-loader"}
+					],
 				})),
-			},
-			// {
-			// 	test:/\.scss$/,
-			// 	use: [{
-			// 		loader: "style-loader" // creates style nodes from JS strings
-			// 	}, {
-			// 		loader: "css-loader" // translates CSS into CommonJS
-			// 	}, {
-			// 		loader: "sass-loader" // compiles Sass to CSS
-			// 	}]
-			// },
+			}
 		]
 	},
 	plugins: [
