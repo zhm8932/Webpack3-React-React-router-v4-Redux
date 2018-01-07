@@ -4,7 +4,10 @@
 import {connect} from 'react-redux';
 import fetchs from '../libs/utils/fetch';
 import * as utils from '../libs/utils';
-
+import Cookies from 'js-cookie';
+console.log("Cookies:",Cookies)
+Cookies.set("name",123455,{expires:1})
+console.log(Cookies.get());
 const Index = ()=>(
 	<div className="wrapper">
 		<p>首页</p>
@@ -81,8 +84,9 @@ async function getTopic(data) {
 	console.log("data：",data)
 	let result = await fetchs({url:'https://cnodejs.org/api/v1/topics',data})
 	console.log("result:",result,utils)
-	if(result.code==200){
-
+	if(result.success){
+		console.log("数据获取成功:",$())
+		// $.cookie("name:",'123456')
 	}else{
 		console.log("result.message:",result.message)
 		utils.msg({title:result.message,delayTime:5000})

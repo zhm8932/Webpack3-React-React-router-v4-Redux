@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const fs = require('fs');
 let {ROOT,SRC_PATH,publicPath,PUBLIC_PATH} = require('./commonPath');
 
+var OfflinePlugin = require('offline-plugin');
+
 // const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 let entry={};
@@ -140,5 +142,6 @@ module.exports = {
 			// manifest:require('../public/vendors.manifest.json') //用来引入刚才输出的manifest.json文件
 			manifest:require(path.join(PUBLIC_PATH,'vendors.manifest.json')) //用来引入刚才输出的manifest.json文件
 		}),
+		new OfflinePlugin()
 	]
 }
