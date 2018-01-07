@@ -56,11 +56,5 @@ module.exports = {
 		"document": true,
 		"console": true,
 		"React": true,
-		"exports": true,
-		"require": true,
-		"fetch": true,
-		"process": true,
-		"module": true,
-		"$": true,
 	}
 };
