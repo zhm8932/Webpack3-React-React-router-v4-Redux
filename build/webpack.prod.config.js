@@ -16,14 +16,14 @@ module.exports = merge(webpackConfig,{
 				test:/\.scss$/,
 				use:ExtractTextPlugin.extract({  //开发环境分离css时，热更新无效 使用css-hot-loader
 					fallback:'style-loader',
-					use: [{
-						loader: "css-loader",
-						options: {
-							minimize: true // css压缩
-						}
-					}, {
-						loader: "sass-loader"
-					}],
+					use: [
+						{loader: "css-loader",options: {minimize: true,importLoaders: 1}}, //css压缩
+						{loader: "postcss-loader",	options: {
+							ident: 'postcss',
+							plugins: [ require('autoprefixer')({broswer: 'last 5 versions'})] //处理CSS前缀问题，自动添加前缀
+						}},
+						{loader: "sass-loader"}
+					],
 				}),
 			},
 		]

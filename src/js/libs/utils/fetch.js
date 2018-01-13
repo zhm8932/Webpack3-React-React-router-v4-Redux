@@ -20,7 +20,7 @@ const fetchs = ({url,method='GET',mode='',data={}})=>{
 		headers:{
 			'Content-Type': 'application/json',
 			'key':'71d7c958ddaade37861387ee208f2f67'
-		},
+		}
 		// body:JSON.stringify(data)
 	}).then(response=>response.json())
 }

@@ -10,7 +10,7 @@ const mapStateToProps = (state)=>{
 	console.log("state.cnode:",state.cnode)
 	return {
 		userDetail:state.cnode.userDetail,
-		topicCollect:state.cnode.topicCollect,
+		topicCollect:state.cnode.topicCollect
 	}
 }
 

@@ -42,7 +42,7 @@ class Contact extends React.Component {
 			this.setState({
 				listLen: 9,
 				hasMore: 1,
-				initializing: 2, // initialized
+				initializing: 2 // initialized
 			},function () {
 				var height = getWindowHeight()-160
 				// console.log("getWindowHeight:",height,this.refs['view-box']);

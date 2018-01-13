@@ -12,7 +12,7 @@ console.log("appKey:",appKey)
 
 @connect(
 	(state) => ({
-		bookList:state.books.bookList,
+		bookList:state.books.bookList
 	}),
 	{getBooks}
 )

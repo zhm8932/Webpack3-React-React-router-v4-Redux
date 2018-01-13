@@ -1,9 +1,9 @@
 /**
  * Created by haiming.zeng on 2017/10/27.
  */
-import {connect} from 'react-redux'
-import {getCnodeDetail,handleShow} from '../actions'
-import {formatDate} from '../libs/utils'
+import {connect} from 'react-redux';
+import {getCnodeDetail,handleShow} from '../actions';
+import {formatDate} from '../libs/utils';
 import ReplyList from '../components/cnode/ReplyList';
 
 import Dialog from '../components/Dialog';
@@ -64,7 +64,7 @@ class CnodeDetail extends React.Component{
 const mapStateToProps=(state)=>({
 	cnodeDetail:state.cnode.cnodeDetail,
 	dialog:state.dialog,
-	msg:state.msg,
+	msg:state.msg
 })
 
 // const mapDispatchToProps = (dispatch,ownProps)=>{

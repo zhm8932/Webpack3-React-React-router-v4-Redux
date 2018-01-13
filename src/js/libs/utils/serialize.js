@@ -5,36 +5,36 @@
  *
  * 运行实例:外部调用  var serialize = util.serialize()
  * */
-const serialize = function (ele = '.form',isClean=false, child = 'input,textarea,select,checkbox') {
-    // var $inputs = $(ele).find('input,textarea,select'),
-    var $inputs = $(ele).find(child),
-        serialize = {}, key;
-    if ($inputs.length) {
-        $.each($inputs, function (index, item) {
-            key = $(item).attr('name');
-            if (key) {
-                if ($(item).attr('type') == 'checkbox') {
-                    serialize[key] = $(item).is(":checked");
-                } else if ($(item).attr('type') == 'radio') {
-                    serialize[key] = $($(item)[0].tagName + '[name=' + key + ']:radio:checked').val();
-                } else {
-                    if(!isClean){
-	                    serialize[key] = $(item).val();
-                    }else{
-	                    $(item).val('');
-                    }
+const serialize = function (ele = '.form', isClean = false, child = 'input,textarea,select,checkbox') {
+	// var $inputs = $(ele).find('input,textarea,select'),
+	var $inputs = $(ele).find(child),
+		serialize = {}, key;
+	if ($inputs.length) {
+		$.each($inputs, function (index, item) {
+			key = $(item).attr('name');
+			if (key) {
+				if ($(item).attr('type') == 'checkbox') {
+					serialize[key] = $(item).is(":checked");
+				} else if ($(item).attr('type') == 'radio') {
+					serialize[key] = $($(item)[0].tagName + '[name=' + key + ']:radio:checked').val();
+				} else {
+					if (!isClean) {
+						serialize[key] = $(item).val();
+					} else {
+						$(item).val('');
+					}
 
-                }
+				}
 
-            }
-        })
-    }
-    // console.log("serialize:", serialize)
-    if (!$(ele).length) {
-        throw new Error('不存在该对象!--------------》' + ele + '');
-    }
+			}
+		})
+	}
+	// console.log("serialize:", serialize)
+	if (!$(ele).length) {
+		throw new Error('不存在该对象!--------------》' + ele + '');
+	}
 
-    return serialize
+	return serialize
 }
 
 module.exports = serialize;

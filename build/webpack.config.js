@@ -48,8 +48,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.js','.jsx','.json','.scss','.jade','.less'],
 		modules: [
-		    path.join(SRC_PATH, "js"),
-		   "node_modules"
+			path.join(SRC_PATH, "js"),
+			"node_modules"
 		],
 		alias:{
 			libs:path.join(SRC_PATH,'js/libs'),
@@ -63,8 +63,19 @@ module.exports = {
 	module: {
 		rules:[
 			{
+				enforce: 'pre',
+				test:/\.jsx?/,
+				use:'eslint-loader',
+				include: /src/,
+				exclude:/node_modules/
+			},
+			{
 				test:/\.jsx?$/,
-				use:'babel-loader',
+				use: [
+					"babel-loader",
+					// "eslint-loader",
+				],
+				// include: /src/,
 				exclude:/node_modules/
 			},
 			{
