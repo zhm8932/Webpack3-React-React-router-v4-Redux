@@ -3,7 +3,7 @@
  */
 const apiPath = require('../utils/apiPath');
 const proxy = require('../utils/proxy');
-const Tools = require('../utils/tools');
+const Utils = require('../utils');
 const config = require('../config');
 exports.get_banner = function (req,res,next) {
 	proxy(req,res,{
@@ -24,7 +24,7 @@ exports.get_jops_list = function (req,res,next) {
 	var query = req.query;
 	console.log("jobCatId:",req.jobCatId)
 
-	if(!Tools.isAjax(req)){
+	if(!Utils.isAjax(req)){
 		if(!req.jobCatId){
 			console.log("不获取职位")
 			return next()
@@ -77,7 +77,7 @@ exports.get_jops_list = function (req,res,next) {
 				})
 		}
 
-		if(Tools.isAjax(req)){
+		if(Utils.isAjax(req)){
 			return res.send(json)
 		}
 
@@ -103,7 +103,7 @@ exports.get_jops_detail = function (req,res,next) {
 		data:{id:req.query.jobId||req.jobId},
 		isRestful:true
 	}).then(function (json) {
-		if(Tools.isAjax(req)){
+		if(Utils.isAjax(req)){
 			return res.send(json)
 		}
 		res.locals.jobDetail = json;
@@ -149,7 +149,7 @@ exports.save_customer_note = function (req,res,next) {
 		path:apiPath.saveCustomerNote,
 		data:data,
 	}).then(function (json) {
-		if(Tools.isAjax(req)){
+		if(Utils.isAjax(req)){
 			return res.send(json)
 		}
 		next();

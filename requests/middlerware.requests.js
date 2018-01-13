@@ -3,7 +3,6 @@
  */
 const apiPath = require('../utils/apiPath');
 const proxy = require('../utils/proxy');
-const Tools = require('../utils/tools');
 const config = require('../config');
 
 exports.get_all_provinces = function (req,res,next) {

@@ -48,8 +48,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.js','.jsx','.json','.scss','.jade','.less'],
 		modules: [
-		    path.join(SRC_PATH, "js"),
-		   "node_modules"
+			path.join(SRC_PATH, "js"),
+			"node_modules"
 		],
 		alias:{
 			libs:path.join(SRC_PATH,'js/libs'),
@@ -72,10 +72,10 @@ module.exports = {
 			{
 				test:/\.jsx?$/,
 				use: [
-				  "babel-loader",
-				  // "eslint-loader",
+					"babel-loader",
+					// "eslint-loader",
 				],
-				include: /src/,
+				// include: /src/,
 				exclude:/node_modules/
 			},
 			{
