@@ -3,14 +3,14 @@
 //去左右空格
 String.prototype.trim = function () {
 	return this.replace(/(^\s*)|(\s*$)/g, "");
-}
+};
 //jquery 插件
 import './jqPlugins';
 
-import tools from 'tools'
+import tools from 'tools';
 export const formatDate = tools.formatDate;
 export const htmlEncode = tools.htmlEncode;
-console.log("tools:", tools)
+console.log("tools:", tools);
 export function formatPassDate(str) {
 
 	var date = new Date(str);
@@ -55,8 +55,8 @@ export function parseQueryString(str) {
 	search && search.forEach(function (item, index) {
 		let arr = item.split('=');
 		// console.log("item:",item)
-		obj[arr[0]] = htmlEncode(decodeURI(arr[1]))
-	})
+		obj[arr[0]] = htmlEncode(decodeURI(arr[1]));
+	});
 	// console.log("obj:",obj)
 	return obj;
 }
@@ -109,21 +109,21 @@ export function isChinese(obj) {
 	// if((/^[\u4e00-\u9fa5]+/).test(obj)){
 	//[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*
 	if ((/^[\u4e00-\u9fa5]+/).test(obj)) {
-		return true
+		return true;
 	}
 	return false;
 }
 //验证是否为2-20个汉字姓名
 export function isChineseName(obj) {
 	if ((/^[\u4E00-\u9FA5]{2,20}$/).test(obj)) {
-		return true
+		return true;
 	}
 	return false;
 }
 //是否为正整数
 export function isPositiveNum(s) {
 	var re = /^[0-9]*[1-9][0-9]*$/;
-	return re.test(s)
+	return re.test(s);
 }
 //是否为登录密码
 export function isPassword(str) {
@@ -160,8 +160,8 @@ export function initImgSize({ele = ".list", rate}) {
 	let viewWidth = $(ele).find('.img').width();
 	let viewHeight;
 	if (!$img.length) {
-		console.log("未找到图片")
-		return false
+		console.log("未找到图片");
+		return false;
 	}
 	//获取高度
 	function getViewHeight(originRate) {
@@ -198,7 +198,7 @@ export function initImgSize({ele = ".list", rate}) {
 				originRate = width / height;
 				// console.log("originRate:",originRate)
 				//图片真实宽、高
-				getViewHeight(originRate)
+				getViewHeight(originRate);
 
 			} else {
 				getViewHeight(originRate);
@@ -224,7 +224,7 @@ export function initImgSize({ele = ".list", rate}) {
 	});
 }
 export function lazyload({ele = '.list', rate = 1} = {}) {
-	console.log("raterateraterate:", rate)
+	console.log("raterateraterate:", rate);
 	$(ele).find('img').lazyload({
 		effect: "fadeIn",
 		load: function () {

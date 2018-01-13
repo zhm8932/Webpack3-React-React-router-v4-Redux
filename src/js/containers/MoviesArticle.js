@@ -1,14 +1,14 @@
 /**
  * Created by 91608 on 2017/11/12.
  */
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {getMovieArticle,getBooksCat} from '../actions';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import '../../sass/movies.scss';
-import SimpleSlider from '../components/SimpleSlider'
+import SimpleSlider from '../components/SimpleSlider';
 import appKey from '../libs/utils/appKey';
 
-console.log("appKey:",appKey)
+console.log("appKey:",appKey);
 
 class MovieArticle extends React.Component{
 	componentDidMount(){
@@ -39,23 +39,23 @@ class MovieArticle extends React.Component{
 							</li>
 						))}</ul>
 				</div>
-			)
+			);
 		}else{
 			return (
 				<div>
 					<h4>{bookCat.reason}</h4>
 					<p>{bookCat.error_code}</p>
 				</div>
-			)
+			);
 		}
 	}
 	render(){
-		console.log("moveArticle----:",this.props.moveArticle)
-		let {moveArticle,bookCat} = this.props
+		console.log("moveArticle----:",this.props.moveArticle);
+		let {moveArticle,bookCat} = this.props;
 
 
 		if(!moveArticle.id){
-			return <div className="wrapper pd">数据加载中……</div>
+			return <div className="wrapper pd">数据加载中……</div>;
 		}
 		let {casts,directors} = moveArticle;
 		return(
@@ -95,16 +95,16 @@ class MovieArticle extends React.Component{
 				<h3>图书电商数据· · · · · ·</h3>
 				{this.renderBooks()}
 			</div>
-		)
+		);
 	}
 }
 
 const mapStateToProps = (state)=>({
 	moveArticle:state.movies.moveArticle,
 	bookCat:state.books.bookCat
-})
+});
 
 export default connect(
 	mapStateToProps,
 	{getMovieArticle,getBooksCat}
-)(MovieArticle)
+)(MovieArticle);

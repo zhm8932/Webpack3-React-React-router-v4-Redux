@@ -28,7 +28,7 @@ $.extend($.fn, {
 				if ($self.hasClass('open')) {
 					$self.removeClass('open');
 				}
-			})
+			});
 			//显示选择框
 			$body.on('click', ele, function (e) {
 				e.stopPropagation();
@@ -49,7 +49,7 @@ $.extend($.fn, {
 					$selectedText.siblings('input[type="hidden"]').val(value);
 					$self.removeClass('open');
 				}
-			})
+			});
 		}
 		//设置默认值
 		return this.each(function (i, item) {
@@ -61,8 +61,8 @@ $.extend($.fn, {
 			if ($li.length > 0) {
 				//不是数字
 				if (index && isNaN(index)) {
-					console.log("index:", index)
-					return
+					console.log("index:", index);
+					return;
 				}
 				if (value) {
 					// console.log("$li:",$li)
@@ -70,7 +70,7 @@ $.extend($.fn, {
 						if ($(arr).attr('data-value') == value) {
 							index = j + 1;
 						}
-					})
+					});
 				}
 				//默认索引必须当前范围内
 				if (index - 1 > $li.length) {
@@ -84,7 +84,7 @@ $.extend($.fn, {
 					$selectedText[0].nodeName === 'INPUT' ? $selectedText.val($defaultLi.html()) : $selectedText.html($defaultLi.html());
 				}
 			}
-		})
+		});
 	},
 
 	//禁用
@@ -92,12 +92,12 @@ $.extend($.fn, {
 		return this.each(function () {
 			let $this = $(this);
 			if ($.isEmpty(disableText)) {
-				$this.addClass('disable').attr('disabled', true)
+				$this.addClass('disable').attr('disabled', true);
 			} else {
 				let defaultText = $this.data('defaultText') || $this.text();
-				$this.data('defaultText', defaultText).html(disableText).addClass('disable').attr('disabled', true)
+				$this.data('defaultText', defaultText).html(disableText).addClass('disable').attr('disabled', true);
 			}
-		})
+		});
 	},
 	//启用
 	enable: function (defaultText) {
@@ -110,8 +110,8 @@ $.extend($.fn, {
 				// 恢复对象可用状态
 				$this.html(defaultText).data('defaultText', '');
 			}
-			$(this).removeClass('disable').attr('disabled', false)
-		})
+			$(this).removeClass('disable').attr('disabled', false);
+		});
 	},
 	//定时器
 	timer: function (options) {
@@ -142,4 +142,4 @@ $.extend($.fn, {
 			setTime();
 		});
 	}
-})
+});

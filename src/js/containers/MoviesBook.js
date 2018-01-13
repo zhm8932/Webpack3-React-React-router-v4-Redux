@@ -1,14 +1,14 @@
 /**
  * Created by 91608 on 2017/11/12.
  */
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {getBooks} from '../actions';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import '../../sass/movies.scss';
-import SimpleSlider from '../components/SimpleSlider'
+import SimpleSlider from '../components/SimpleSlider';
 import appKey from '../libs/utils/appKey';
 
-console.log("appKey:",appKey)
+console.log("appKey:",appKey);
 
 @connect(
 	(state) => ({
@@ -27,21 +27,21 @@ export default class MovieArticle extends React.Component{
 		});
 	}
 	render(){
-		console.log("moveArticle----:",this.props.moveArticle)
-		let {bookList:json} = this.props
-		console.log("json:",json)
+		console.log("moveArticle----:",this.props.moveArticle);
+		let {bookList:json} = this.props;
+		console.log("json:",json);
 
 
 		if(!json.reason){
-			return <div className="wrapper pd">数据加载中……</div>
+			return <div className="wrapper pd">数据加载中……</div>;
 		}
 		let {data} = json.result;
 		return(
 			<div className="wrapper pd clearfix movie-article">
 				{data.map(item=>{
 					let online = item.online?item.online.split(' '):[];
-					online = online.map(item=>item.split(":http"))
-					console.log("online:",online)
+					online = online.map(item=>item.split(":http"));
+					console.log("online:",online);
 					return (
 						<div className="block clearfix">
 							<h2>{item.title}({item.catalog})</h2>
@@ -67,10 +67,10 @@ export default class MovieArticle extends React.Component{
 								<p>{item.sub2.length>200?item.sub2.substring(0,200)+"· · · · · ·":item.sub2}</p>
 							</div>
 						</div>
-					)
+					);
 				})}
 
 			</div>
-		)
+		);
 	}
 }

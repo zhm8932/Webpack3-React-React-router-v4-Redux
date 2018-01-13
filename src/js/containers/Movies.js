@@ -1,9 +1,9 @@
 /**
  * Created by 91608 on 2017/11/12.
  */
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import {getMoviesList,getMovie} from '../actions';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 class Movies extends React.Component{
 	componentDidMount(){
@@ -15,7 +15,7 @@ class Movies extends React.Component{
 		});
 	}
 	render(){
-		console.log("movie----:",this.props.moveList)
+		console.log("movie----:",this.props.moveList);
 		let {subjects} = this.props.moveList;
 
 
@@ -23,7 +23,7 @@ class Movies extends React.Component{
 
 
 		if(!subjects){
-			return <div className="wrapper pd">数据加载中……</div>
+			return <div className="wrapper pd">数据加载中……</div>;
 		}
 		return(
 			<div className="wrapper pd">
@@ -44,15 +44,15 @@ class Movies extends React.Component{
 					</ul>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 
 const mapStateToProps = (state)=>({
 	moveList:state.movies.moveList
-})
+});
 
 export default connect(
 	mapStateToProps,
 	{getMoviesList,getMovie}
-)(Movies)
+)(Movies);

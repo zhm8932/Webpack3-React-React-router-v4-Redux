@@ -2,9 +2,9 @@
  * Created by 91608 on 2017/11/4.
  */
 
-import React, {Component, PropTypes} from 'react'
+import React, {Component, PropTypes} from 'react';
 // import 'dialog.css';//引入样式文件 此处省略CSS Mouldes 或者 style in js的css模块化方案讨论
-import '../../sass/includes/dialog.scss'
+import '../../sass/includes/dialog.scss';
 export default class Dialog extends Component {
 	// static propTypes = {
 	// 	actions: PropTypes.node,//接受一个react element或者react element的数组
@@ -52,7 +52,7 @@ export default class Dialog extends Component {
 		if (!buttonClicked && this.props.modal) {
 			return; //如果不是按钮触发close同时dialog是模态框，就return
 		}
-		this.props.onRequestClose && this.props.onRequestClose(buttonClicked)
+		this.props.onRequestClose && this.props.onRequestClose(buttonClicked);
 	}
 
 	handleClickOverlay = () => { //箭头函数避免this错误
@@ -75,7 +75,7 @@ export default class Dialog extends Component {
 
 	render() {
 		const {title, children, actions, open, modal} = this.props;
-		console.log("action:", actions)
+		console.log("action:", actions);
 		return (
 			<div className="dialog-container">
 				{open &&
@@ -99,6 +99,6 @@ export default class Dialog extends Component {
 				></div>
 				}
 			</div>
-		)
+		);
 	}
 }

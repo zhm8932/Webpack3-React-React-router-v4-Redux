@@ -22,8 +22,7 @@ Msg.prototype = {
 	init: function () {
 		var self = this,
 			opts = self.options,
-			effect = opts.effect,
-			interTime = opts.interTime;
+			effect = opts.effect;
 		//console.log(effect)
 		switch (effect) {
 			case 'fade':
@@ -33,11 +32,11 @@ Msg.prototype = {
 
 		}
 		if (opts.isHide) {
-			self.hideMsg(opts.callback)
+			self.hideMsg(opts.callback);
 		}
 	},
 	setHtml: function () {
-		return '<div class="' + this.options.mainCell + ' ' + this.options.otherBox + '"></div>'
+		return '<div class="' + this.options.mainCell + ' ' + this.options.otherBox + '"></div>';
 	},
 	hideMsg: function (cb) {
 		var self = this;
@@ -47,10 +46,9 @@ Msg.prototype = {
 				cb();
 			}
 
-		}, this.options.delayTime)
+		}, this.options.delayTime);
 	},
 	render: function () {
-		var boxHtml = '';
 		var opts = this.options,
 			width = opts.width,
 			height = opts.height || $('.' + mainCell).height(),
@@ -64,8 +62,6 @@ Msg.prototype = {
 		$('.' + mainCell).html(this.options.title);
 		height = height <= 24 ? 48 : height;
 		// console.log("height：",height)
-		var bdlw = $('.' + mainCell).css('border-left-width'),
-			bdrw = $('.' + mainCell).css('border-right-width');
 		// var realwidth = width-parseInt(bdlw)-parseInt(bdrw);
 		var realwidth = width;
 		if (!opts.otherBox) {
@@ -74,12 +70,12 @@ Msg.prototype = {
 				height: height + 'px',
 				'margin-left': -width / 2,
 				'margin-top': -height / 2
-			}).show()
+			}).show();
 			// $('.'+opts.mainCell).css({width:width+'px',height:height+'px','line-height':height+'px','margin-left':-width/2,'margin-top':-height/2}).show()
 		}
 	}
 };
 const msg = function (options) {
-	return new Msg(options)
-}
+	return new Msg(options);
+};
 module.exports = msg;

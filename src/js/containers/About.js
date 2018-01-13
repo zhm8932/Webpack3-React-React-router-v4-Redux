@@ -1,7 +1,7 @@
 /**
  * Created by haiming.zeng on 2017/10/27.
  */
-import '../../sass/abouts.scss'
+import '../../sass/abouts.scss';
 const About = ()=>(
 	<div>
 		<div className="ads">
@@ -90,4 +90,4 @@ const About = ()=>(
 	</div>
 );
 
-export default About
+export default About;

@@ -27,14 +27,14 @@ const serialize = function (ele = '.form', isClean = false, child = 'input,texta
 				}
 
 			}
-		})
+		});
 	}
 	// console.log("serialize:", serialize)
 	if (!$(ele).length) {
 		throw new Error('不存在该对象!--------------》' + ele + '');
 	}
 
-	return serialize
-}
+	return serialize;
+};
 
 module.exports = serialize;

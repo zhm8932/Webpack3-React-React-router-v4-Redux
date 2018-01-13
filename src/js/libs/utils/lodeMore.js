@@ -23,7 +23,7 @@ const LodeMore = function (options) {
 		otherHeigth: 0,
 		data: {},
 		isForEach: false  //是否在在内部遍历
-	}
+	};
 	this.opts = $.extend({}, defaults, options);
 	this.$main = $(this.opts.main);
 	let winHeight = $(window).height(),
@@ -49,7 +49,7 @@ const LodeMore = function (options) {
 			self.$main.attr("data-pageNo", 1);
 			pageNo = parseInt(self.$main.attr("data-pageNo"));
 		}
-		console.log("isAjax:", self.opts.isAjax, "isEnd:", self.opts.isEnd)
+		console.log("isAjax:", self.opts.isAjax, "isEnd:", self.opts.isEnd);
 		if (self.opts.isEnd == true || self.opts.isAjax == true) {
 			return;
 		}
@@ -63,7 +63,7 @@ const LodeMore = function (options) {
 				// console.log("initData:",typeof initData);
 				//动态获查询参数
 				if (typeof self.opts.initData == "function") {
-					self.opts.data = $.extend({}, self.opts.data, self.opts.initData())
+					self.opts.data = $.extend({}, self.opts.data, self.opts.initData());
 				}
 				self.getData(self.opts.data);
 			}
@@ -76,18 +76,18 @@ const LodeMore = function (options) {
 				self.$loaderFooter.find('.loader-loading').hide();
 			}
 			//提示没有了
-			return false
+			return false;
 		}
 
-	})
-}
+	});
+};
 
 LodeMore.prototype = {
 	initLoadMore(){
 		this.opts.isEnd = false;
 		this.opts.page = 2;
 		this.$main.attr("data-pageNo", 1);
-		console.log("this.$loaderFooter:", this.$loaderFooter)
+		console.log("this.$loaderFooter:", this.$loaderFooter);
 		this.$loaderFooter.removeClass('no-more');
 		this.$loaderFooter.find('.loader-loading').hide();
 	},
@@ -109,9 +109,9 @@ LodeMore.prototype = {
 		}).done(function (json) {
 			self.opts.isAjax = false;
 			let {data, pageNo, pageCount} = json;
-			console.log("json:", json)
+			console.log("json:", json);
 			if (!json.success) {
-				self.$loaderFooter.find('.loader-text').show().html(`<em>${json.msg}</em>`)
+				self.$loaderFooter.find('.loader-text').show().html(`<em>${json.msg}</em>`);
 			}
 			data = data ? data.content : [];
 			console.log("pageCount:", pageCount, "pageNo:", pageNo, "isAjax", self.opts.isAjax, "isEnd", self.opts.isEnd);
@@ -132,14 +132,14 @@ LodeMore.prototype = {
 				}
 				if (data && data.length) {
 					if (!self.opts.isForEach) {
-						resultHtml = self.opts.html && self.opts.html(json, serialize)
+						resultHtml = self.opts.html && self.opts.html(json, serialize);
 					} else {
 						data.forEach(function (item) {
-							resultHtml += self.opts.html && self.opts.html(item, serialize)
-						})
+							resultHtml += self.opts.html && self.opts.html(item, serialize);
+						});
 					}
 				}
-				console.log("resultHtml:", resultHtml)
+				console.log("resultHtml:", resultHtml);
 				self.$main.append(resultHtml);
 				if (typeof self.opts.renderDomComplete == "function") {
 					self.opts.renderDomComplete();
@@ -160,9 +160,9 @@ LodeMore.prototype = {
 			console.log("err:", err);
 		});
 	}
-}
+};
 
 var lodeMore = function (options) {
-	return new LodeMore(options)
-}
+	return new LodeMore(options);
+};
 module.exports = lodeMore;
