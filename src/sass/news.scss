@@ -1,4 +1,4 @@
-@import "includes/settings";
+ @import "includes/settings";
 .list-wrapper{
   header{
     position: relative;border-bottom: 1px solid $color-gray-9;
@@ -11,7 +11,7 @@
   }
 }
 
-.article{
+.article-news{
   header{
     padding: 3rem 0 2rem;text-align: center;border-bottom: 1px solid $color-gray-9;
     margin-bottom: 3rem;

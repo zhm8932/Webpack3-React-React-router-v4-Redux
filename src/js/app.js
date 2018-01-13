@@ -2,6 +2,9 @@
  * Created by haiming.zeng on 2017/10/27.
  */
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
@@ -10,6 +13,7 @@ import {createLogger} from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducer from './reducers';
 import callApi from './middleware/callApi';
+import 'babel-polyfill';
 
 // import MainContainer from './containers/MainContainer'
 import Routes from './routes';
