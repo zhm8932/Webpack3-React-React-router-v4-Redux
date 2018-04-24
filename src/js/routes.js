@@ -18,6 +18,9 @@ import News from './containers/News'
 import NewsDetail from './containers/NewsDetail'
 import CnodeList from './containers/CnodeList'
 import CnodeDetail from './containers/CnodeDetail'
+import Login from './containers/Login'
+import Register from './containers/Register';
+
 // import CnodeDetail from './CnodeDetail'
 import UserContainer from './containers/UserContainer'
 import ContactContainer from './containers/ContactContainer'
@@ -33,6 +36,7 @@ const lazyLoadComponent = (comp) => (props) => (
 
 
 import {getCnode} from './actions'
+// import Register from "./containers/Register";
 
 const Routes = ()=>(
 	<Router>
@@ -61,6 +65,8 @@ const Routes = ()=>(
 			<Route exact path="/movies" component={lazyLoadComponent(Movies)}/>
 			<Route path="/movies/article/:id" component={lazyLoadComponent(MoviesArticle)}/>
 			<Route path="/movies/book/:id" component={lazyLoadComponent(MoviesBook)}/>
+			<Route path="/login" component={lazyLoadComponent(Login)}/>
+			<Route path="/register" component={lazyLoadComponent(Register)}/>
 		</div>
 	</Router>
 )

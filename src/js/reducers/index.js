@@ -9,6 +9,7 @@ import dialog from './dialog';
 import msg from './msg';
 import movies from './movies';
 import books from './books';
+import users from './users';
 
 export default combineReducers({
 	cart,
@@ -17,5 +18,6 @@ export default combineReducers({
 	dialog,
 	msg,
 	movies,
-	books
+	books,
+	users
 })

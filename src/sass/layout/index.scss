@@ -28,7 +28,7 @@
 }
 
 .btn{
-  display: inline-block;padding: 0 2rem;border: 1px solid $color-orange-e6a;
+  display: inline-block;padding: 0 2rem;
   line-height: 30px;height: 30px;cursor: pointer;
   .ui-loadings{
     &:before{margin-right: 5px;width: 10px;height: 10px;position: relative;top: -2px;
@@ -37,6 +37,9 @@
     }
     &:after{content: ''}
   }
+}
+.submit-btn{
+  display: block;width: 100%;
 }
 .loader-footer{
   text-align: center;
@@ -137,7 +140,7 @@
     }
   }
 }
-#app{height: 100%}
+//#app{height: 100%}
 .list-wrapper{
   //overflow-y:scroll;
   //height: 500px;

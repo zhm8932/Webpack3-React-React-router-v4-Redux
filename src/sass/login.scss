@@ -1,0 +1,12 @@
+@import "includes/settings";
+
+.form-list{
+  width: 300px;margin: 3rem auto;
+  h2{font-size: 1.8rem;padding-bottom: 2rem;}
+  ul{}
+  li{padding:0 0 20px 0;
+    > input{line-height: 30px;height: 30px;border: 1px solid $color-gray-c;padding: 0 10px;}
+    select{width: 170px;padding: 0 10px;}
+    .icon-arrow-bottom{margin-left: -20px;}
+  }
+}

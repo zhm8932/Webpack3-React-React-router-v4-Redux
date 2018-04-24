@@ -96,7 +96,7 @@ app.use(csp({
 		scriptSrc: ["'self'","'unsafe-inline'"],
 		styleSrc: ["'self'","'unsafe-inline'"],
 		imgSrc: ["'self'",'apis.juhe.cn','*.doubanio.com','data:','*.gravatar.com',...images],
-		fontSrc: ["'self'",'data:'],
+		fontSrc: ["'self'",'data:','*.alicdn.com'],
 		connectSrc: ["'self'",'cnodejs.org','ws://localhost:4010'],
 		// sandbox: ['allow-forms', 'allow-scripts'],
 		reportUri: '/report-violation',

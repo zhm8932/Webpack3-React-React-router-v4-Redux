@@ -11,13 +11,17 @@ import thunk from 'redux-thunk';
 import reducer from './reducers'
 import callApi from './middleware/callApi'
 
+
+//默认语言为 en-US ,使用中文配置
+// import { LocaleProvider } from 'antd';
+// import zh_CN from 'antd/lib/locale-provider/zh_CN';
+
 // import MainContainer from './containers/MainContainer'
 import Routes from './routes'
 
 import * as utils from './libs/utils';
 
 console.log("utils:",utils)
-console.log("htmlEncode:",utils.htmlEncode)
 import {getAllProducts} from './actions';
 
 // const middleware = [thunk];
@@ -42,3 +46,13 @@ ReactDOM.render(
 	</Provider>,
 	document.getElementById('app')
 )
+
+/*
+ReactDOM.render(
+	<LocaleProvider locale={zh_CN}>
+		<Provider store={store}>
+			<Routes/>
+		</Provider>
+	</LocaleProvider>,
+	document.getElementById('app')
+)*/

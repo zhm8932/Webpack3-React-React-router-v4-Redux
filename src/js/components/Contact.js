@@ -45,8 +45,6 @@ class Contact extends React.Component {
 				initializing: 2, // initialized
 			},function () {
 				var height = getWindowHeight()-160
-				// console.log("getWindowHeight:",height,this.refs['view-box']);
-				// this.refs['view-box'].style.height = height;
 			});
 		}, 2e3);
 	}
@@ -72,7 +70,7 @@ class Contact extends React.Component {
 			}
 		}
 		return (
-			<div className="view" ref='view-box'>
+			<div className="view">
 				<h1>react-touch-loader {refreshedAt.toString().substr(7)}</h1>
 
 				<Tloader className="main"
@@ -86,15 +84,6 @@ class Contact extends React.Component {
 			</div>
 		);
 
-		// <h2>
-		// 	<a href="https://github.com/Broltes/react-touch-loader">view source</a>
-		// 	<label>
-		// 		can refresh resolve
-		// 		<input type="checkbox"
-		// 		       checked={canRefreshResolve}
-		// 		       onChange={(e) => this.toggleCanRefresh(e)} />
-		// 	</label>
-		// </h2>
 	}
 }
 

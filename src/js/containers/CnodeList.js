@@ -3,9 +3,7 @@
  */
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import fetchs,{CALL_API} from '../libs/utils/fetch';
 import {getCnodeList,getCnodeListMore,getDataStart} from '../actions'
-
 import {getScrollTop,getWindowHeight,getScrollHeight} from '../libs/utils/getSize';
 import NavBar from '../components/NavBar';
 const articleTypeList={
@@ -113,12 +111,14 @@ class CnodeList extends React.Component{
 
 	}
 	render(){
-		console.log("cnode11111111111:",this.props);
+
 		let {cnodeList,...props} = this.props;
 		let {data} = cnodeList;
-		props.ref = node => { this.selfComponent = node }
+
+		console.log("cnode11111111111:",this.props);
+		// props.ref = node => { this.selfComponent = node }
 		return(
-			<div className="wrapper list-wrapper" ref='listBox' >
+			<div className="wrapper list-wrapper">
 				<NavBar getDataStart={props.getDataStart} getCnodeList={props.getCnodeList} articleType={cnodeList.articleType} articleTypeList={articleTypeList}/>
 				<div className="lists">
 					<ul>

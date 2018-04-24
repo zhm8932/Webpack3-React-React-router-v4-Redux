@@ -92,10 +92,12 @@ export function isTel(mobilenum){
 //校验是否为空值
 export function isEmpty(obj){
     var reg =/^\s*$/g;
-    if(reg.test(obj) === false)
-    {
+    if(reg.test(obj) === false) {
         return  false;
     }
+	if (obj === undefined || obj === null) {
+		return true;
+	}
     return true;
 }
 export function isCardNo(card) {

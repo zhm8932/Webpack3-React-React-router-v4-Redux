@@ -4,6 +4,7 @@
 import {connect} from 'react-redux'
 import {getMoviesList,getMovie} from '../actions';
 import {Link} from 'react-router-dom'
+import '../../sass/movies.scss';
 
 class Movies extends React.Component{
 	componentDidMount(){

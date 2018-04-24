@@ -129,6 +129,7 @@ const fetchMovie = (url,data) => ({
 
 export const getMovie =({url,data})=>dispatch=>{
 	console.log("data----------:",data)
+	console.log("fetchMovie(url,data)----------:",fetchMovie(url,data))
 	return dispatch(fetchMovie(url,data))
 }
 

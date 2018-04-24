@@ -36,7 +36,7 @@ function callApi(options={}) {
 		...options
 	}
 
-	console.log("自定义中间件")
+	console.log("自定义中间件");
 
 	return ({getState})=>next=>action=>{
 		console.log("getState111:",getState)
@@ -48,11 +48,14 @@ function callApi(options={}) {
 		const callAPI = action[CALL_API];
 		console.log("callAPI:",callAPI)
 
+		//获取action对象
 		const actionWidth = data=>{
 			const finalAction = Object.assign({},action,data)
 			console.log("actionWidth---data:",data)
+			console.log("finalAction---data:",finalAction)
 
 			delete finalAction[CALL_API];
+			console.log("finalAction:",finalAction)
 			return finalAction
 		}
 
@@ -60,6 +63,7 @@ function callApi(options={}) {
 
 
 		if(!callAPI){
+			console.log("没有callAPI");
 			return next(actionWidth())
 		}else{
 			const {types,url,data,mode} = callAPI;

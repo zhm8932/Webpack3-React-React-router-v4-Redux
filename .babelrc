@@ -1,6 +1,16 @@
 {
   "presets": [
-    "es2015","react","stage-2"
+    [
+      "env", {
+      "debug": true,
+      "useBuiltIns": true,
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7","ie >= 7"],
+        "node": "current"
+      }
+    }
+    ],
+    "react","stage-2"
   ],
   "plugins": ["transform-decorators-legacy"],
   "env":{

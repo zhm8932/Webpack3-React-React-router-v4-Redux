@@ -46,6 +46,20 @@ let o2 = {
 console.log("o:",o,o[s1]==o[s2])
 console.log("o2:",o2)
 
+var o3 = {
+	name:"张三",
+	age:'25',
+	phone:'13588889999'
+}
+let map = new Map();
+map.set("name","李四")
+map.set("age","22")
+
+console.log("o3:",o3);
+for(let [key,value] of map){
+	console.log("key:",key,"value:",value)
+}
+
 function test() {
 	let obj1 = {a:0,b:{c:0},[Symbol('dd')]:1};
 	let obj2 = Object.assign({},obj1);
@@ -69,5 +83,13 @@ function test() {
 	let obj3 = ''
 }
 
-test()
+// test()
+
+let str = 'hello world';
+console.log("str1:",str.startsWith('he'),str.startsWith('wor'))
+console.log("str2:",str.includes('he'),str.includes('wor'))
+
+
+
+
 export default Index
