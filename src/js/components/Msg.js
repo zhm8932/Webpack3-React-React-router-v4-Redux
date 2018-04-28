@@ -1,34 +1,44 @@
 /**
  * Created by 91608 on 2017/11/4.
  */
-
-import React, { Component, PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 // import 'dialog.css';//引入样式文件 此处省略CSS Mouldes 或者 style in js的css模块化方案讨论
 import '../../sass/includes/dialog.scss'
 export default class Dialog extends Component {
-
+	static PropTypes = {
+		okText:PropTypes.string,
+		bOkBtn:PropTypes.bool,
+		handleMsgOk:PropTypes.func.isRequired,
+		actions:PropTypes.element,
+		delayTime:PropTypes.number
+	}
+	static defaultProps = {
+		okText:'确认',
+		bOkBtn:true,
+		delayTime:3000
+	}
 	componentDidMount() {
-		this.positionDialog();
 		//给window全局绑定 resize和 keyup
 		window.addEventListener('resize', this.handleResize);
 		window.addEventListener('keyup', this.handleKeyUp);
-		setTimeout(()=>this.props.handleMsgCancle(),5000)
-	}
 
+
+
+	}
 	componentDidUpdate() {
 		console.log("componentDidUpdate")
-		this.positionDialog();
+		//弹框显示时、并且没有关闭按钮，自动隐藏弹框
+		if(this.props.open&&!this.props.bOkBtn){
+			console.log("自动隐藏")
+			setTimeout(()=>this.props.handleMsgOk(),this.props.delayTime)
+		}
 
 	}
 
 	componentDidUnmount(){
 		window.removeEventListener('resize', this.handleResize);
 		window.removeEventListener('keyup', this.handleKeyUp);
-	}
-
-	positionDialog() {
-		//doSomeThing 来重置Dilog的位置和最大高度限制等
-		//关键代码是fingDOM()/this.refs/DOM的高度API等 此细节不深入了
 	}
 
 	requestClose(buttonClicked) { //buttonClicked 标示触发关闭弹窗的是否为按钮
@@ -39,7 +49,8 @@ export default class Dialog extends Component {
 	}
 
 	handleClickOverlay = () => { //箭头函数避免this错误
-		this.requestClose(false);
+		// this.requestClose(false);
+		this.props.handleMsgOk && this.props.handleMsgOk()
 	}
 	handleKeyUp = (event) => {
 		if(!this.props.open){
@@ -56,29 +67,32 @@ export default class Dialog extends Component {
 		this.positionDialog();
 	}
 	render(){
-		const {title, children, actions, open ,modal} = this.props;
+		const {title, children, actions, open ,modal,handleMsgOk,bOkBtn,okText} = this.props;
 		console.log("this.props-MSG:",this.props)
+		console.log("bOkBtn:",bOkBtn)
 		return (
-			<div className="msg-container">
+			<div className="msg-wrapper">
 				{open &&
 				<div className="msg-box">
-					<div className="msg">
-						<div className="msg-title">
-							{title}
-						</div>
-						<div className="msg-content">
-							{children}
-						</div>
-						<div className="msg-action">
-							{actions}
-						</div>
+					<div className="msg-title">
+						{title}
 					</div>
+					<div className="msg-content">
+						{children}
+					</div>
+					{
+						bOkBtn
+						?<div className="msg-action"><button className="ok" onClick={handleMsgOk}>{this.props.okText}</button></div>
+						:actions&&<div className="msg-action">{actions}</div>
+					}
+
 				</div>
 				}
 				{open &&
-				<div className={`overlay ${modal?'transparent':''}`}
-					onClick={this.handleClickOverlay}
-					></div>
+					<div className={`overlay ${modal?'transparent':''}`}
+						onClick={this.handleClickOverlay}
+					>
+					</div>
 				}
 			</div>
 		)

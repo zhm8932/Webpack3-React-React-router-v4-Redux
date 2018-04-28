@@ -58,9 +58,12 @@ module.exports = {
 			views:path.join(ROOT,'views'),
 			// images:path.join(SRC_PATH,'images'),
 			slides:'libs/jquery.slides.js',
+			moment:'moment/min/moment-with-locales.min.js',
 		}
 	},
 	module: {
+		//略对已知文件的解析,提高打包速度
+		noParse: [/moment-with-locales/],
 		rules:[
 			{
 				test:/\.jsx?$/,
@@ -127,12 +130,14 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.optimize.ModuleConcatenationPlugin(), //启用作用域提升 让代码文件更小、运行的更快
 		new webpack.ProvidePlugin({
 			$: "jquery",
 			jQuery: "jquery",
 			"window.jQuery": "jquery",
 			'React':'react',
 			'ReactDOM':'react-dom',
+			moment:'moment'
 		}),
 		new webpack.optimize.CommonsChunkPlugin({name:'common',minChunks:3}), //模块必须被3个才会共享
 		new webpack.DllReferencePlugin({

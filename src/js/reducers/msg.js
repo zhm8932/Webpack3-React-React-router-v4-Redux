@@ -7,12 +7,14 @@ const msg = (state={show:false,content:''},action)=>{
 		case 'MSG_SHOW':
 			return {
 				show:true,
+				iconLoading:true,
 				content:action.content
 			};
 		case 'MSG_HIDE':
 			return {
 				...state,
-				show:false
+				show:false,
+				iconLoading:false
 			};
 		default:
 			return state

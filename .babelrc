@@ -12,7 +12,7 @@
     ],
     "react","stage-2"
   ],
-  "plugins": ["transform-decorators-legacy"],
+  "plugins": ["transform-decorators-legacy",["import",{"libraryName":"antd"}]],
   "env":{
     "development":{
       "presets":["react-hmre"]  // babel-preset-react-hmre：让Babel知道HMR（热替换），涉及到了webpack.config.js里loader为babel（也就是js、jsx使用babel-loader地方）的配置

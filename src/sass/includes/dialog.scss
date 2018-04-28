@@ -93,12 +93,13 @@
     height:3rem;line-height:3rem;font-size: 16px;  text-align: center;border-top: 1px solid $color-gray-c;
     div{height: 100%}
     button{
-      display:inline-block;padding:0 10px;border:none;line-height:100%;height:100%;outline:none;text-align: center; cursor: pointer;font-size: 14px;
-      width: 50%;background-color: $color-blue-4c7;color: $white;
+      display:inline-block;padding:0 10px;border:none;line-height:100%;height:100%;outline:none;
+      text-align: center; cursor: pointer;
+      width: 50%;color: $color-blue-4c7;
       font-size: 1.6rem;
       &.ok{}
-      &.cancel{background-color: $color-gray-c;}
-      &.disabled{background-color: $color-gray-9;cursor:default;}
+      &.cancel{}
+      &.disabled{cursor:default;}
     }
 
   }

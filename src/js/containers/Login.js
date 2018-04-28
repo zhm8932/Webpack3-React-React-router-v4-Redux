@@ -14,7 +14,6 @@ class Login extends React.Component{
 		super(props);
 		console.log("login:",this.props.login)
 		this.state={
-			iconLoading:false,
 			sex:2
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,7 +55,8 @@ class Login extends React.Component{
 	// enterIconLoading(){
 	// 	this.setState({iconLoading:true})
 	// }
-	enterIconLoading = () => {
+	enterIconLoading = (e) => {
+		this.handleSubmit(e);
 		this.setState({ iconLoading: true });
 	}
 	render(){
@@ -132,7 +132,7 @@ class Login extends React.Component{
 					</ul>
 					<div className="submit-box">
 						<button type="submit" onClick={this.handleSubmit} className="btn" >登录</button>
-						<Button type="primary" loading={this.state.iconLoading} onClick={this.enterIconLoading}>
+						<Button type="primary" loading={msg.iconLoading} onClick={this.enterIconLoading}>
 							Click me!
 						</Button>
 					</div>
@@ -140,9 +140,10 @@ class Login extends React.Component{
 				<Msg
 					open={msg.show}
 					modal={false}
-					actions={<button className="cancel" onClick={this.props.handleMsgCancle}>知道了</button>}
-
-					handleMsgCancle={this.props.handleMsgCancle}
+					bOkBtn={true}
+					okText="知道了"
+					handleMsgOk={this.props.handleMsgOk}
+					// actions={<button className="cancel" onClick={this.props.handleMsgOk}>知道了</button>}
 				>
 					{this.props.msg.content}
 				</Msg>
@@ -164,7 +165,7 @@ const mapStateToProps = (state)=>({
 	msg:state.msg
 })
 const mapDispatchToProps = (dispatch,ownPorps)=>({
-	handleMsgCancle:()=>dispatch(handleShow('MSG_HIDE')),
+	handleMsgOk:()=>dispatch(handleShow('MSG_HIDE')),
 	handleMsgShow:(msg)=>dispatch(handleShow("MSG_SHOW",msg))
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Login)

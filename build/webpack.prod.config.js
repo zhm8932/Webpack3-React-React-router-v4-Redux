@@ -7,6 +7,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpackConfig = require('./webpack.config');
 const {ROOT,SRC_PATH,PUBLIC_PATH} = require('./commonPath');
 module.exports = merge(webpackConfig,{
@@ -29,6 +30,7 @@ module.exports = merge(webpackConfig,{
 		]
 	},
 	plugins: [
+		new BundleAnalyzerPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
 		}),
