@@ -28,16 +28,19 @@ class Movies extends React.Component{
 		}
 		return(
 			<div className="wrapper pd">
-				<div className="list">
+				<div className="list movie-list">
 					<ul className="clearfix">
 						{
 							subjects.map(item=>(
 								<li>
-									<Link to={`/movies/article/${item.id}`}>
-										<img className="img" src={item.images.small}/>
-										<h4>{item.title}  【{item.year}】</h4>
-										<p>{item.genres.join('-')}</p>
-										<p>豆瓣评分：{item.rating.average}</p>
+									<Link to={`/movies/article/${item.id}`} >
+										<div className="img zoomImage" style={{backgroundImage:"url("+item.images.small+")"}}></div>
+										{/*<img className="img" src={item.images.small}/>*/}
+										<figcaption>
+											<h4>{item.title}  【{item.year}】</h4>
+											<p>{item.genres.join('-')}</p>
+											<p>豆瓣评分：{item.rating.average}</p>
+										</figcaption>
 									</Link>
 								</li>
 							))
