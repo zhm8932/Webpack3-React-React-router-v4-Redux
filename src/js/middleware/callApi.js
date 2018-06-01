@@ -55,12 +55,10 @@ function callApi(options={}) {
 			console.log("finalAction---data:",finalAction)
 
 			delete finalAction[CALL_API];
-			console.log("finalAction:",finalAction)
 			return finalAction
 		}
 
 		console.log("actionWidth:",actionWidth())
-
 
 		if(!callAPI){
 			console.log("没有callAPI");

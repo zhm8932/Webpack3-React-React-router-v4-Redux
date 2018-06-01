@@ -10,11 +10,12 @@ const fetchs = ({url,method='GET',mode='',data={}})=>{
 	for (let i in data) {
 		query += `${i}=${data[i]}&`;
 	}
+	method = method.toUpperCase();
 	// console.log("query:",query)
-	if(method=='GET'){
+	if(method==='GET'){
 		url+=`?${query.slice(0,-1)}`
 	}
-	return fetch(url,{
+	let options = {
 		method,
 		mode:mode,
 		headers:{
@@ -22,7 +23,11 @@ const fetchs = ({url,method='GET',mode='',data={}})=>{
 			'key':'71d7c958ddaade37861387ee208f2f67'
 		},
 		// body:JSON.stringify(data)
-	}).then(response=>response.json())
+	}
+	if(method==='POST'){
+		options.body = JSON.stringify(data);
+	}
+	return fetch(url,options).then(response=>response.json())
 }
 
 export default fetchs

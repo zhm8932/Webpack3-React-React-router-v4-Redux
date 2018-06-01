@@ -1,3 +1,4 @@
+import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Icon, Input, Button, Checkbox,Modal,Col, TimePicker, Select, Cascader, InputNumber} from 'antd';
@@ -84,11 +85,11 @@ class Register extends React.Component{
 							})(
 								<Checkbox>记住</Checkbox>
 							)}
-							<a className="login-form-forgot" href="">忘记密码</a>
+							<NavLink to="/forget" className="login-form-forgot">忘记密码</NavLink>
 							<Button type="primary" htmlType="submit" className="btn submit-btn">
 								注册
 							</Button>
-							Or <a href="/login">登录</a>
+							Or <NavLink to="/login">登录</NavLink>
 						</FormItem>
 
 						<FormItem

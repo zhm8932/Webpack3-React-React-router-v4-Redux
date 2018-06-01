@@ -94,7 +94,15 @@ export const handleShow = (type,content='')=>({
 	type:type,
 	content
 })
-
+//显示
+export const handleMsgShow = msg=>dispatch=>{
+	console.log("msg23333333333333333:",msg)
+	return dispatch(handleShow("MSG_SHOW",msg))
+}
+//隐藏
+export const handleMsgHidden = ()=>dispatch=>{
+	dispatch(handleShow("MSG_HIDE"))
+}
 export const moviesList=json=>({
 	type:'MOVE_LIST',
 	// userDetail:json,

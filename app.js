@@ -15,6 +15,7 @@ var formatDate = require('./utils/tools').formatDate;  //时间转换
 var index = require('./routes/index');
 var news = require('./routes/news');
 var movies = require('./routes/movies');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -109,6 +110,7 @@ app.use(csp({
 // app.use('/news', news);
 app.use('/movies', movies);
 app.use('/', index);
+app.use('/users', users);
 
 
 

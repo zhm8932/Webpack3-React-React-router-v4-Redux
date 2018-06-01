@@ -20,6 +20,7 @@ import CnodeList from './containers/CnodeList'
 import CnodeDetail from './containers/CnodeDetail'
 import Login from './containers/Login'
 import Register from './containers/Register';
+import Forget from './containers/Forget';
 
 // import CnodeDetail from './CnodeDetail'
 import UserContainer from './containers/UserContainer'
@@ -67,6 +68,7 @@ const Routes = ()=>(
 			<Route path="/movies/book/:id" component={lazyLoadComponent(MoviesBook)}/>
 			<Route path="/login" component={lazyLoadComponent(Login)}/>
 			<Route path="/register" component={lazyLoadComponent(Register)}/>
+			<Route path="/forget" component={lazyLoadComponent(Forget)}/>
 		</div>
 	</Router>
 )
