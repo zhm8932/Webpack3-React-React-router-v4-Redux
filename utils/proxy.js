@@ -37,23 +37,7 @@ const proxy = function (req,res,opts) {
 		}
 
 
-		// if(opts.apiType==config.apiType.msxf){
-		// 	// protocol = 'https';
-		// 	path =`/${apiType}/${opts.path}`;
-		// 	hostname = config.hostnameMsxf;
-		// }
 
-		path += encodeURI(query);
-		let uri = `${protocol}://${hostname}:${port}${path}`;
-		if(port=='80'){
-			uri = `${protocol}://${hostname}${path}`;
-		}
-		// let uri = opts.uri?opts.uri:{
-		// 	protocol:protocol,  //协议 http
-		// 	hostname :hostname, //主机名
-		// 	port : port,        //端口 默认80
-		// 	path : path                //请求路径
-		// };
 
 		console.log("uri:",uri)
 		let options = {

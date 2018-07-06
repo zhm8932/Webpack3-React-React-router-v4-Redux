@@ -2,7 +2,7 @@
 # Node Settings
 #########################setting####################
 port=3008
-uid=qhsnowball8.msxf.lotest
+uid=www.xxxx.lotest
 #cfgPath=/home/finance/Config/$uid/config.json
 cfgPath=/home/finance/Config/$uid/config
 appPath=/home/finance/App/$uid

@@ -19,10 +19,6 @@ class Movies extends React.Component{
 		console.log("movie----:",this.props.moveList)
 		let {subjects} = this.props.moveList;
 
-
-		console.log("subjectsxxxxxxxxxxxx:",subjects);
-
-
 		if(!subjects){
 			return <div className="wrapper pd">数据加载中……</div>
 		}

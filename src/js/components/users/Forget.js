@@ -31,6 +31,10 @@ class Forget extends React.Component{
 		// this.props.handleSubmit(data,e);
 		this.setState({ iconLoading: true });
 	}
+	handleMsgOk(){
+		console.log("this:",this)
+		this.setState({open:false})
+	}
 	render(){
 		let {msg,forget} = this.props;
 		console.log("msg:",msg);
@@ -67,7 +71,8 @@ class Forget extends React.Component{
 					modal={false}
 					bOkBtn={true}
 					okText="知道了"
-					handleMsgOk={this.props.handleMsgOk}
+					handleMsgOk={this.handleMsgOk.bind(this)}
+					// handleMsgOk={this.props.handleMsgOk}
 				>
 					{this.props.msg.content}
 				</Msg>

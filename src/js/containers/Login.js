@@ -1,13 +1,15 @@
 import {connect} from 'react-redux'
 import * as utils from '../libs/utils';
-
+import Cookies from 'js-cookie'
 
 import '../../sass/login.scss'
 import Msg from '../components/Msg';
-import {handleShow} from "../actions";
+import {handleShow,handleLogin} from "../actions";
 import {DatePicker,Button,Icon,Affix,BackTop,Radio,Select,Slider,Checkbox } from 'antd'
+import fetchs from "../libs/utils/fetch";
 const {RangePicker} = DatePicker;
 const RadioButton = Radio.Button;
+import {login} from '../actions'
 
 class Login extends React.Component{
 	constructor(props){
@@ -19,7 +21,7 @@ class Login extends React.Component{
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
 	}
-	handleSubmit(e){
+	handleSubmit(data,e){
 		e.preventDefault();
 		console.log("login::",this.props.login)
 		let {login} = this.props;
@@ -30,6 +32,8 @@ class Login extends React.Component{
 			return this.props.handleMsgShow("请输入8-20位数字和字母的密码");
 		}
 
+		this.props.handleLogin(data)
+		// this.props.history.push('/')
 	}
 	onChange(event){
 
@@ -131,7 +135,7 @@ class Login extends React.Component{
 						</li>
 					</ul>
 					<div className="submit-box">
-						<button type="submit" onClick={this.handleSubmit} className="btn" >登录</button>
+						<button type="submit" onClick={this.handleSubmit.bind(this,this.props.login)} className="btn" >登录</button>
 						<Button type="primary" loading={msg.iconLoading} onClick={this.enterIconLoading}>
 							Click me!
 						</Button>
@@ -166,6 +170,21 @@ const mapStateToProps = (state)=>({
 })
 const mapDispatchToProps = (dispatch,ownPorps)=>({
 	handleMsgOk:()=>dispatch(handleShow('MSG_HIDE')),
-	handleMsgShow:(msg)=>dispatch(handleShow("MSG_SHOW",msg))
+	handleMsgShow:(msg)=>dispatch(handleShow("MSG_SHOW",msg)),
+	// handleLogin:(data)=>dispatch(handleLogin(data))
+	handleLogin:(data)=>{
+		console.log("ownPorps:",ownPorps)
+		fetchs({
+			url:'/users/login',
+			method:'POST',
+			data:data
+		})
+		.then(json => {
+			console.log("jsonjsonjson:",json)
+			dispatch(login(json))
+			Cookies.set('token',json.token)
+			ownPorps.history.push('/')
+		})
+	}
 })
 export default connect(mapStateToProps,mapDispatchToProps)(Login)

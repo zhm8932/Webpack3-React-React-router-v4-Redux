@@ -1,10 +1,42 @@
 /**
  * Created by haiming.zeng on 2017/10/27.
  */
+
+
+
+/*
+本质上是 JavaScript 普通对象
+Action 描述当前发生的事情。改变 State 的唯一办法，就是使用 Action。它会运送数据到 Store
+Action 是把数据从应用（译者注：这里之所以不叫 view 是因为这些数据有可能是服务器响应，
+用户输入或其它非 view 的数据 ）传到 store 的有效载荷。
+它是 store 数据的唯一来源。一般来说你会通过 store.dispatch() 将 action 传到 store。
+* */
+
 import * as types from '../constants/ActionTypes'
 import fetchs,{CALL_API} from '../libs/utils/fetch';
+import Cookies from 'js-cookie';
+import {BrowserRouter} from 'react-router-dom';
 
 console.log("CALL_API:",CALL_API)
+
+
+export const login = (data)=>({
+	type:'LOGIN',
+	data
+})
+export const handleLogin = (data) => dispatch => {
+	fetchs({
+		url:'/users/login',
+		method:'POST',
+		data:data
+	})
+	.then(json => {
+		console.log("jsonjsonjson:",json)
+		dispatch(login(json))
+		Cookies.set('token',json.token)
+		BrowserRouter.push('/')
+	})
+}
 const receiveProducts = products=>({
 	type:types.RECEIVE_PRODUCTS,
 	products:products
@@ -103,21 +135,17 @@ export const handleMsgShow = msg=>dispatch=>{
 export const handleMsgHidden = ()=>dispatch=>{
 	dispatch(handleShow("MSG_HIDE"))
 }
+
+//电影列表
 export const moviesList=json=>({
 	type:'MOVE_LIST',
-	// userDetail:json,
 	json:json
 })
 
+//获取电影列表
 export const getMoviesList = id=>dispatch=>{
-	// dispatch({type:'REQUEST_USER_DETAIL'})
-	// fetchs({url:'https://api.douban.com/v2/movie/in_theaters'})
-	// 	.then(json=>dispatch(moviesList(json)))
 	fetchs({url:'/apis/v2/movie/in_theaters',mode: "no-cors"})
-	// fetchs({url:'/apis/v2/book/1220562',mode: "no-cors"})
-	// fetchs({url:'/apis/comments'})
 		.then(json=>dispatch(moviesList(json)))
-
 
 	//fetchs({url:'/movies/list'}).then(json=>dispatch(moviesList(json)))
 }
@@ -166,8 +194,6 @@ export const MOVIE_COMMENTS_FAILURE = 'MOVIE_COMMENTS_FAILURE';
 const fetchMovieComments = (url,data) => ({
 	[CALL_API]: {
 		types: [ MOVIE_COMMENTS_REQUEST, MOVIE_COMMENTS_SUCCESS, MOVIE_COMMENTS_FAILURE ],
-		// url: url,
-		// url:'/apis/v2/movie/subject/2158490/comments',
 		url:'/apis/v2/movie/subject/2158490/comments',
 		mode: "no-cors",
 		data:data

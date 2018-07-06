@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var loggers = require('morgan');
 var cookieParser = require('cookie-parser');
 
 var bodyParser = require('body-parser');
@@ -34,7 +33,6 @@ console.log("app.get('env'):",app.get('env'),'NODE_ENV:',process.env.NODE_ENV);
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
-app.use(loggers('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

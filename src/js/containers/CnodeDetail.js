@@ -67,15 +67,6 @@ const mapStateToProps=(state)=>({
 	msg:state.msg,
 })
 
-// const mapDispatchToProps = (dispatch,ownProps)=>{
-// 	console.log("ownProps:",ownProps)
-// 	return {
-// 		getCnodeDetail:()=>dispatch(getCnodeDetail(ownProps.match.params.id)),
-// 		handleSubmit:function () {}
-//
-// 	}
-// }
-
 const mapDispatchToProps = (dispatch,ownProps)=>({
 	getCnodeDetail:()=>dispatch(getCnodeDetail(ownProps.match.params.id)),
 	handleCollect:()=>dispatch(handleShow('DIALOG_SHOW')),

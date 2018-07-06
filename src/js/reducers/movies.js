@@ -13,6 +13,7 @@ const moveList = (state={},action)=>{
 }
 
 const moveArticle = (state={},action)=>{
+	console.log("actionactionaction:",action)
 	switch (action.type){
 		case 'MOVIE_ARTICLE_SUCCESS':
 			return action.json

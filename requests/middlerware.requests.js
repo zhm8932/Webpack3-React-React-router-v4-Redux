@@ -10,30 +10,21 @@ exports.get_all_provinces = function (req,res,next) {
 	proxy(req,res,{
 		method:'GET',
 		path:apiPath.getAllProvinces,
-		apiType: config.apiType.msxf,
+		apiType: config.apiType.daq,
 	}).then(function (json) {
 		res.send(json)
 	}).catch(function (err) {
 		req.positionData = res.locals.positionData = err;
 		next()
 	})
-	// proxy(req,res,{
-	// 	method:'POST',
-	// 	path:"WSGetDemandBasicsFacade/getDemandBasics",
-	// 	apiType: config.apiType.msxf,
-	// }).then(function (json) {
-	// 	res.locals.position = json.data;
-	// 	next();
-	// }).catch(function (err) {
-	// 	next()
-	// })
+
 }
 
 exports.get_citys = function (req,res,next) {
 	proxy(req,res,{
 		method:'GET',
 		path:apiPath.getCitys,
-		apiType: config.apiType.msxf,
+		apiType: config.apiType.daq,
 		data:{parentCode:req.query.code}
 	}).then(function (json) {
 		res.send(json)
@@ -41,14 +32,5 @@ exports.get_citys = function (req,res,next) {
 		req.positionData = res.locals.positionData = err;
 		next()
 	})
-	// proxy(req,res,{
-	// 	method:'POST',
-	// 	path:"WSGetDemandBasicsFacade/getDemandBasics",
-	// 	apiType: config.apiType.msxf,
-	// }).then(function (json) {
-	// 	res.locals.position = json.data;
-	// 	next();
-	// }).catch(function (err) {
-	// 	next()
-	// })
+
 }

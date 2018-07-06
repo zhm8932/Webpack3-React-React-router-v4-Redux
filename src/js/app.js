@@ -30,6 +30,7 @@ const middleware = [thunk,callApi()];
 if(process.env.NODE_ENV!=='production'){
 	middleware.push(createLogger())
 }
+//createStore 生成 Store :保存数据的地方
 const store = createStore(
 	reducer,
 	applyMiddleware(...middleware)

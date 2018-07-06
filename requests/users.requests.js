@@ -17,6 +17,16 @@ exports.forget = function (req,res,next) {
 	})
 
 }
+exports.login = function (req,res,next) {
+	let json = {
+		message:"登录成功",
+		code:200,
+		token:'API'+new Date().getTime()
+	}
+	logger.info("响应数据：",json)
+	res.send(json)
+
+}
 exports.get_news_category = function (req,res,next) {
 	var query = req.query;
 	if(Tools.isAjax(req)){

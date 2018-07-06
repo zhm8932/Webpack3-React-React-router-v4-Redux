@@ -1,9 +1,12 @@
 import {combineReducers} from 'redux';
-
-const login = (state={username:'',password:''},action)=>{
+import Cookies from 'js-cookie';
+let isAuthenticated = Cookies.get('token')||false;
+const login = (state={username:'',password:'',isAuthenticated:isAuthenticated},action)=>{
+	console.log("actionaction:",action)
+	console.log("statestatestate:",state)
 	switch (action.type){
 		case 'LOGIN':
-			return action.json
+			return {...state,isAuthenticated:true,token:action.data.token}
 		default :
 			return state
 	}

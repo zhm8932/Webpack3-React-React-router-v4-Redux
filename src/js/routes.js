@@ -4,14 +4,16 @@
 /**
  * Created by haiming.zeng on 2017/10/31.
  */
-
+import Cookies from 'js-cookie';
 import Bundle from './libs/Bundle';
 import {
 	BrowserRouter as Router,
 	Route,
 	Link,
-	NavLink
+	NavLink,
+	Redirect
 } from 'react-router-dom';
+import AuthorizedRoute from './AuthorizedRoute'
 import Index from './containers/Index'
 import About from './containers/About'
 import News from './containers/News'
@@ -21,24 +23,47 @@ import CnodeDetail from './containers/CnodeDetail'
 import Login from './containers/Login'
 import Register from './containers/Register';
 import Forget from './containers/Forget';
-
-// import CnodeDetail from './CnodeDetail'
 import UserContainer from './containers/UserContainer'
 import ContactContainer from './containers/ContactContainer'
 import Movies from './containers/Movies'
 import MoviesArticle from './containers/MoviesArticle'
 import MoviesBook from './containers/MoviesBook'
 
+//按需加载
 const lazyLoadComponent = (comp) => (props) => (
 	<Bundle load={comp}>
 		{(Container) => <Container {...props}/>}
 	</Bundle>
 )
 
+// 登录验证
+const requireAuth = (nextState, replace)=>{
+	let token = Cookies.get('token')||'';
+	console.log("token:",token)
+	console.log("nextState:",nextState)
+	console.log("replace:",replace)
+	if(token){
+		replace('/');
+	}
+}
 
-import {getCnode} from './actions'
-// import Register from "./containers/Register";
 
+const PrivateRoute = ({ component: Component, ...rest }) => {
+	let isAuthenticated = Cookies.get('token')||false;
+	console.log("isAuthenticated:",isAuthenticated)
+	return(
+		<Route {...rest} render={props => (
+			isAuthenticated ? (
+				<Component {...props}/>
+			) : (
+				<Redirect to={{
+					pathname: '/login',
+					state: { from: props.location }
+				}}/>
+			)
+		)}/>
+	)
+}
 const Routes = ()=>(
 	<Router>
 		<div>
@@ -55,15 +80,15 @@ const Routes = ()=>(
 					</nav>
 				</div>
 			</header>
-			<Route exact path="/" component={lazyLoadComponent(Index)}/>
-			<Route path="/about" component={lazyLoadComponent(About)}/>
-			<Route exact path="/news" component={lazyLoadComponent(News)}/>
+			<Route exact path="/" component={lazyLoadComponent(Index)} onEnter={requireAuth}/>
+			<PrivateRoute path="/about" component={lazyLoadComponent(About)}/>
+			<Route exact path="/news" component={lazyLoadComponent(News)} onEnter={requireAuth}/>
 			<Route path="/news/article/:id" component={lazyLoadComponent(NewsDetail)}/>
 			<Route exact path="/cnode" component={lazyLoadComponent(CnodeList)}/>
 			<Route path="/cnode/article/:id" component={lazyLoadComponent(CnodeDetail)}/>
 			<Route path="/user/:id" component={lazyLoadComponent(UserContainer)}/>
 			<Route path="/contacts" component={lazyLoadComponent(ContactContainer)}/>
-			<Route exact path="/movies" component={lazyLoadComponent(Movies)}/>
+			<PrivateRoute exact path="/movies" component={lazyLoadComponent(Movies)}/>
 			<Route path="/movies/article/:id" component={lazyLoadComponent(MoviesArticle)}/>
 			<Route path="/movies/book/:id" component={lazyLoadComponent(MoviesBook)}/>
 			<Route path="/login" component={lazyLoadComponent(Login)}/>

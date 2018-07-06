@@ -59,13 +59,12 @@ function callApi(options={}) {
 		}
 
 		console.log("actionWidth:",actionWidth())
-
+		//next 相当于dispatch
 		if(!callAPI){
 			console.log("没有callAPI");
 			return next(actionWidth())
 		}else{
 			const {types,url,data,mode} = callAPI;
-
 
 			const [requestType,successType,failurType] = types;
 			next(actionWidth({type:requestType}))
