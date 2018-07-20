@@ -2,9 +2,9 @@
  * Created by 91608 on 2017/11/4.
  */
 
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react';
 // import 'dialog.css';//引入样式文件 此处省略CSS Mouldes 或者 style in js的css模块化方案讨论
-import '../../sass/includes/dialog.scss'
+import '../../sass/includes/dialog.scss';
 export default class Dialog extends Component {
 	// static propTypes = {
 	// 	actions: PropTypes.node,//接受一个react element或者react element的数组
@@ -38,7 +38,7 @@ export default class Dialog extends Component {
 		this.positionDialog();
 	}
 
-	componentDidUnmount(){
+	componentDidUnmount() {
 		window.removeEventListener('resize', this.handleResize);
 		window.removeEventListener('keyup', this.handleKeyUp);
 	}
@@ -49,32 +49,33 @@ export default class Dialog extends Component {
 	}
 
 	requestClose(buttonClicked) { //buttonClicked 标示触发关闭弹窗的是否为按钮
-		if(!buttonClicked && this.props.modal){
+		if (!buttonClicked && this.props.modal) {
 			return; //如果不是按钮触发close同时dialog是模态框，就return
 		}
-		this.props.onRequestClose && this.props.onRequestClose(buttonClicked)
+		this.props.onRequestClose && this.props.onRequestClose(buttonClicked);
 	}
 
 	handleClickOverlay = () => { //箭头函数避免this错误
 		this.requestClose(false);
 	}
 	handleKeyUp = (event) => {
-		if(!this.props.open){
+		if (!this.props.open) {
 			return;
 		}
-		if(event.keyCode==27){ //esc的keyCode码
+		if (event.keyCode == 27) { //esc的keyCode码
 			this.requestClose(false);
 		}
 	}
 	handleResize = () => {
-		if(!this.props.open){
+		if (!this.props.open) {
 			return;
 		}
 		this.positionDialog();
 	}
-	render(){
-		const {title, children, actions, open ,modal} = this.props;
-		console.log("action:",actions)
+
+	render() {
+		const {title, children, actions, open, modal} = this.props;
+		console.log("action:", actions);
 		return (
 			<div className="dialog-container">
 				{open &&
@@ -93,11 +94,11 @@ export default class Dialog extends Component {
 				</div>
 				}
 				{open &&
-				<div className={`overlay ${modal?'transparent':''}`}
-					onClick={this.handleClickOverlay}
-					></div>
+				<div className={`overlay ${modal ? 'transparent' : ''}`}
+					 onClick={this.handleClickOverlay}
+				></div>
 				}
 			</div>
-		)
+		);
 	}
 }

@@ -6,6 +6,8 @@ const webpack = require('webpack');
 const fs = require('fs');
 let {ROOT,SRC_PATH,publicPath,PUBLIC_PATH} = require('./commonPath');
 
+var OfflinePlugin = require('offline-plugin');
+
 // const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 let entry={};
@@ -48,8 +50,8 @@ module.exports = {
 	resolve: {
 		extensions: ['.js','.jsx','.json','.scss','.jade','.less'],
 		modules: [
-		    path.join(SRC_PATH, "js"),
-		   "node_modules"
+			path.join(SRC_PATH, "js"),
+			"node_modules"
 		],
 		alias:{
 			libs:path.join(SRC_PATH,'js/libs'),
@@ -66,8 +68,19 @@ module.exports = {
 		noParse: [/moment-with-locales/],
 		rules:[
 			{
+				enforce: 'pre',
+				test:/\.jsx?/,
+				use:'eslint-loader',
+				include: /src/,
+				exclude:/node_modules/
+			},
+			{
 				test:/\.jsx?$/,
-				use:'babel-loader',
+				use: [
+					"babel-loader",
+					// "eslint-loader",
+				],
+				// include: /src/,
 				exclude:/node_modules/
 			},
 			{
@@ -145,5 +158,6 @@ module.exports = {
 			// manifest:require('../public/vendors.manifest.json') //用来引入刚才输出的manifest.json文件
 			manifest:require(path.join(PUBLIC_PATH,'vendors.manifest.json')) //用来引入刚才输出的manifest.json文件
 		}),
+		new OfflinePlugin()
 	]
 }

@@ -7,7 +7,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpackConfig = require('./webpack.config');
 const {ROOT,SRC_PATH,PUBLIC_PATH} = require('./commonPath');
 module.exports = merge(webpackConfig,{
@@ -30,13 +29,12 @@ module.exports = merge(webpackConfig,{
 		]
 	},
 	plugins: [
-		new BundleAnalyzerPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
 		}),
 		// 若要按需加载 CSS 则请注释掉该行
 		new ExtractTextPlugin('css/[name].css',{
-			// allChunks : true
+			allChunks : true
 		}),
 		// new webpack.NoErrorsPlugin(),	//不显示错误插件
 		new webpack.optimize.UglifyJsPlugin({

@@ -17,17 +17,18 @@ const fetchs = ({url,method='GET',mode='',data={}})=>{
 	}
 	let options = {
 		method,
-		mode:mode,
-		headers:{
+		mode: mode,
+		headers: {
 			'Content-Type': 'application/json',
-			'key':'71d7c958ddaade37861387ee208f2f67'
-		},
-		// body:JSON.stringify(data)
-	}
-	if(method==='POST'){
+			'key': '71d7c958ddaade37861387ee208f2f67'
+		}
+	};
+	if (method === 'GET') {
+		url += `?${query.slice(0, -1)}`;
+	}else{
 		options.body = JSON.stringify(data);
 	}
-	return fetch(url,options).then(response=>response.json())
-}
+	return fetch(url, options).then(response => response.json());
+};
 
 export default fetchs

@@ -3,10 +3,10 @@
  */
 
 import Slider from 'react-slick';
-console.log("Slider:",Slider);
+console.log("Slider:", Slider);
 
-import '../../sass/includes/slick.scss'
-import '../../sass/includes/slick-theme.scss'
+import '../../sass/includes/slick.scss';
+import '../../sass/includes/slick-theme.scss';
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 
@@ -32,4 +32,4 @@ class SimpleSlider extends React.Component {
 	}
 }
 
-export default SimpleSlider
+export default SimpleSlider;

@@ -12,10 +12,7 @@ const articleTypeList={
 	'job': '招聘',
 	'share':'分享',
 	'ask':'问答'
-
-
-
-}
+};
 
 class CnodeList extends React.Component{
 	constructor(props){

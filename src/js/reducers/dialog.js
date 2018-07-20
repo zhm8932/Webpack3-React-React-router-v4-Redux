@@ -1,7 +1,7 @@
 /**
  * Created by 91608 on 2017/11/4.
  */
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 const dialog = (state=false,action)=>{
 	switch (action.type){
 		case 'DIALOG_SHOW':
@@ -9,9 +9,9 @@ const dialog = (state=false,action)=>{
 		case 'DIALOG_HIDE':
 			return false;
 		default:
-			return false
+			return state;
 
 	}
-}
+};
 
-export default combineReducers({show:dialog})
+export default combineReducers({show:dialog});

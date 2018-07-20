@@ -12,7 +12,7 @@ export default class ReplyList extends React.Component{
 	// }
 	render(){
 		let {replies} = this.props;
-		console.log("replies:",replies)
+		console.log("replies:",replies);
 		if(replies.length){
 			return (
 				<div className="reply-box">
@@ -27,9 +27,9 @@ export default class ReplyList extends React.Component{
 						)}
 					</ul>
 				</div>
-			)
+			);
 		}else{
-			return null
+			return null;
 		}
 
 	}
@@ -38,4 +38,4 @@ export default class ReplyList extends React.Component{
 ReplyList.PropTypes = {
 	replies:PropTypes.number.isRequired,
 	onTodoClick: PropTypes.func.isRequired
-}
+};

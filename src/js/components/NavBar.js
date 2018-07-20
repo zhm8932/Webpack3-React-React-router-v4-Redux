@@ -4,24 +4,25 @@
 
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-class NavBar extends React.Component{
-	changeArticleType(tab){
-		console.log("修改分类:",tab)
+class NavBar extends React.Component {
+	changeArticleType(tab) {
+		console.log("修改分类:", tab);
 		this.props.getDataStart();
-		this.props.getCnodeList({tab,page:1,limit:10});
+		this.props.getCnodeList({tab, page: 1, limit: 10});
 	}
-	render(){
-		console.log("111111111:",this.props)
-		let {articleType,changeArticleType,articleTypeList,getDataStart} = this.props;
+
+	render() {
+		console.log("111111111:", this.props);
+		let {articleType, changeArticleType, articleTypeList, getDataStart} = this.props;
 		var nav = [];
-		for(let key in articleTypeList){
-			nav.push(<a className={key==articleType?"active":''} key={key} onClick={(e)=>this.changeArticleType(key,e)}>{articleTypeList[key]}</a>)
+		for (let key in articleTypeList) {
+			nav.push(<a className={key == articleType ? "active" : ''} key={key} onClick={(e) => this.changeArticleType(key, e)}>{articleTypeList[key]}</a>);
 		}
 		return (
 			<div className="nav-tab">
 				{nav}
 			</div>
-		)
+		);
 	}
 }
 
@@ -36,4 +37,4 @@ class NavBar extends React.Component{
 // 	null,mapDispatchToProps
 // )(NavBar)
 
-export default NavBar
+export default NavBar;
