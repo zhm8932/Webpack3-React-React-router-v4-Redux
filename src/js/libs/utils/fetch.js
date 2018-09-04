@@ -27,6 +27,9 @@ const fetchs = ({url,method='GET',mode='',data={}})=>{
 	if(method==='POST'){
 		options.body = JSON.stringify(data);
 	}
+	if(!options.mode){
+		delete  options.mode
+	}
 	return fetch(url,options).then(response=>response.json())
 }
 

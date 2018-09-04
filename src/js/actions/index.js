@@ -74,6 +74,7 @@ export const getCnodeList = (data={})=>dispatch=>{
 		console.log("json223344:",json)
 		dispatch(cnodeList(json,data))
 	}).catch(function (json) {
+		console.log("catch-json:",json)
 		dispatch({type:'FAILURE_CNODE_LIST',articleType:data.tab})
 	})
 }

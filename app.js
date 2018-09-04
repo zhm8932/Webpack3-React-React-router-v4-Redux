@@ -46,7 +46,7 @@ app.use('/apis', proxy({
 	},
 	secure: false,
 	changeOrigin: true, //是否跨域
-	logLevel:'debug'
+	logLevel:'info' // ['debug', 'info', 'warn', 'error', 'silent']. Default: 'info'
 }));
 
 app.use('/juhe', proxy({
@@ -57,7 +57,7 @@ app.use('/juhe', proxy({
 	},
 	secure: false,
 	changeOrigin: true, //是否跨域
-	logLevel:'debug'
+	logLevel:'info'
 }));
 
 var csp = require('helmet-csp');

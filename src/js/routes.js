@@ -88,7 +88,8 @@ const Routes = ()=>(
 			<Route path="/cnode/article/:id" component={lazyLoadComponent(CnodeDetail)}/>
 			<Route path="/user/:id" component={lazyLoadComponent(UserContainer)}/>
 			<Route path="/contacts" component={lazyLoadComponent(ContactContainer)}/>
-			<PrivateRoute exact path="/movies" component={lazyLoadComponent(Movies)}/>
+			{/*<PrivateRoute exact path="/movies" component={lazyLoadComponent(Movies)}/>*/}
+			<Route exact path="/movies" component={lazyLoadComponent(Movies)}/>
 			<Route path="/movies/article/:id" component={lazyLoadComponent(MoviesArticle)}/>
 			<Route path="/movies/book/:id" component={lazyLoadComponent(MoviesBook)}/>
 			<Route path="/login" component={lazyLoadComponent(Login)}/>
